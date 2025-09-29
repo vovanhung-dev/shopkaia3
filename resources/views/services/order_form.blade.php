@@ -66,7 +66,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                             <div>
                                 <label for="game_username" class="block text-sm font-medium text-gray-700 mb-1">Tên đăng nhập game <span class="text-red-500">*</span></label>
-                                <input type="text" id="game_username" name="game_username" value="{{ old('game_username') }}" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('game_username') border-red-500 @enderror" required>
+                                <input type="text" id="game_username" name="game_username" value="{{ old('game_username') }}" placeholder="Nhập tên đăng nhập game" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('game_username') border-red-500 @enderror" required>
                                 @error('game_username')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
@@ -74,7 +74,7 @@
                             
                             <div>
                                 <label for="game_password" class="block text-sm font-medium text-gray-700 mb-1">Mật khẩu game <span class="text-red-500">*</span></label>
-                                <input type="password" id="game_password" name="game_password" value="{{ old('game_password') }}" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('game_password') border-red-500 @enderror" required>
+                                <input type="password" id="game_password" name="game_password" value="{{ old('game_password') }}" placeholder="Nhập mật khẩu game" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('game_password') border-red-500 @enderror" required>
                                 @error('game_password')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
@@ -86,7 +86,7 @@
                         @if($service->login_type === 'game_id' || $service->login_type === 'both')
                         <div class="mb-6">
                             <label for="game_id" class="block text-sm font-medium text-gray-700 mb-1">ID Game</label>
-                            <input type="text" id="game_id" name="game_id" value="{{ old('game_id') }}" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('game_id') border-red-500 @enderror">
+                            <input type="text" id="game_id" name="game_id" value="{{ old('game_id') }}" placeholder="Nhập ID game của bạn" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('game_id') border-red-500 @enderror">
                             @error('game_id')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -94,7 +94,7 @@
 
                         <div class="mb-6">
                             <label for="game_character_name" class="block text-sm font-medium text-gray-700 mb-1">Tên nhân vật</label>
-                            <input type="text" id="game_character_name" name="game_character_name" value="{{ old('game_character_name') }}" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('game_character_name') border-red-500 @enderror">
+                            <input type="text" id="game_character_name" name="game_character_name" value="{{ old('game_character_name') }}" placeholder="Nhập tên nhân vật" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('game_character_name') border-red-500 @enderror">
                             @error('game_character_name')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -115,7 +115,7 @@
                         
                         <div class="mb-6">
                             <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Ghi chú thêm</label>
-                            <textarea id="notes" name="notes" rows="3" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('notes') border-red-500 @enderror">{{ old('notes') }}</textarea>
+                            <textarea id="notes" name="notes" rows="3" placeholder="Nhập ghi chú thêm (nếu có)" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('notes') border-red-500 @enderror">{{ old('notes') }}</textarea>
                             @error('notes')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror

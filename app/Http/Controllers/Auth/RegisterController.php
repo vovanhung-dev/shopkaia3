@@ -31,10 +31,8 @@ class RegisterController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^[a-z0-9]+$/'],
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-        ], [
-            'email.regex' => 'Tên đăng nhập chỉ được chứa chữ cái thường và số',
         ]);
 
         // Lấy vai trò người dùng
