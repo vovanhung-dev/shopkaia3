@@ -1,0 +1,936 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+    body {
+        font-family: 'Quicksand', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Quicksand', sans-serif;
+    }
+    
+    html {
+        font-family: 'Quicksand', sans-serif;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg px-5 py-2.5 transition-all duration-300 shadow-md hover:shadow-lg inline-block;
+    }
+    
+    .btn-outline {
+        @apply border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-medium rounded-lg px-5 py-2.5 transition-all duration-300 inline-block;
+    }
+    
+    .card {
+        @apply bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden;
+    }
+    
+    .input-field {
+        @apply rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500 shadow-sm w-full;
+    }
+    
+    .section-title {
+        @apply text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6;
+    }
+    
+    .section-subtitle {
+        @apply text-gray-600 text-sm sm:text-base mb-8 sm:mb-12 max-w-xl mx-auto text-center;
+    }
+
+    .badge {
+        @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
+    }
+    
+    .badge-blue {
+        @apply bg-blue-100 text-blue-800;
+    }
+    
+    .badge-green {
+        @apply bg-green-100 text-green-800;
+    }
+    
+    .badge-yellow {
+        @apply bg-yellow-100 text-yellow-800;
+    }
+    
+    .badge-red {
+        @apply bg-red-100 text-red-800;
+    }
+    
+    .divider {
+        @apply w-16 sm:w-24 h-1 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full mx-auto my-4;
+    }
+    
+    .container-custom {
+        @apply px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl;
+    }
+
+    .auto-shrink {
+        font-size: clamp(0.875rem, 2vw, 1.25rem);
+        line-height: 1.2;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+/* Responsive images */
+.img-responsive {
+    @apply w-full h-auto object-cover;
+}
+
+/* Logo Animation */
+.logo-animation {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Hover Effects */
+.hover-shadow {
+    transition: all 0.3s ease;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-5px);
+}
+
+/* Page transitions */
+.page-enter-active,
+.page-leave-active {
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.page-enter-from,
+.page-leave-to {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* Social media icons */
+.social-icon {
+    @apply w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300;
+}
+
+.social-icon-facebook {
+    @apply bg-blue-500 text-white hover:bg-blue-600;
+}
+
+.social-icon-twitter {
+    @apply bg-blue-400 text-white hover:bg-blue-500;
+}
+
+.social-icon-instagram {
+    @apply bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-500 text-white;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-primary {
+    @apply bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700;
+}
+
+.bg-gradient-secondary {
+    @apply bg-gradient-to-r from-gray-50 to-gray-100;
+}
+
+/* Hover animation for cards */
+.card-hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Custom animation for hero elements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-delay-100 {
+    animation-delay: 0.1s;
+}
+
+.animate-delay-200 {
+    animation-delay: 0.2s;
+}
+
+.animate-delay-300 {
+    animation-delay: 0.3s;
+}
+
+/* Custom responsive padding and margin helpers */
+.py-responsive {
+    @apply py-8 sm:py-12 md:py-16 lg:py-20;
+}
+
+.my-responsive {
+    @apply my-8 sm:my-12 md:my-16 lg:my-20;
+}
+
+.px-responsive {
+    @apply px-4 sm:px-6 md:px-8 lg:px-10;
+}
+
+.mx-responsive {
+    @apply mx-4 sm:mx-6 md:mx-8 lg:mx-10;
+}
+
+/* Responsive font sizes */
+.text-responsive-title {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+}
+
+.text-responsive-subtitle {
+    @apply text-lg sm:text-xl md:text-2xl;
+}
+
+.text-responsive {
+    @apply text-sm sm:text-base md:text-lg;
+}
+
+/* Custom breakpoint indicator - useful for debugging responsive issues */
+.breakpoint-indicator {
+    @apply fixed bottom-0 right-0 z-50 p-2 font-bold text-white bg-black;
+}
+
+.breakpoint-indicator::after {
+    content: "sm";
+    @apply sm:content-["sm"] md:content-["md"] lg:content-["lg"] xl:content-["xl"] 2xl:content-["2xl"];
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bbd0e2;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3182ce;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+    .hide-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .touch-scroll {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Grid optimizations for mobile */
+.grid-responsive-1-2-3-4 {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8;
+}
+
+.grid-responsive-1-2-3 {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8;
+}
+
+.grid-responsive-1-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6;
+}
+
+/* Background pattern size adjustment for mobile */
+.bg-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+@media (max-width: 640px) {
+    .bg-pattern {
+        background-size: 40px 40px;
+    }
+}
+
+/* Hiệu ứng viền tia sét */
+.lightning-border {
+    position: relative;
+    z-index: 1;
+}
+
+.lightning-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(
+        45deg,
+        #00c6ff,
+        #0072ff,
+        transparent 60%
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.lightning-border::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    background: linear-gradient(45deg, 
+        rgba(0, 198, 255, 0.3), 
+        rgba(0, 114, 255, 0.3), 
+        transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.lightning-border:hover::after {
+    opacity: 1;
+}
+
+/* Hiệu ứng tia sét di chuyển dọc theo viền */
+.lightning-effect {
+    position: relative;
+    overflow: visible;
+}
+
+.lightning-effect .floating-particle {
+    position: absolute !important;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 20%, rgba(0, 198, 255, 0.7) 70%);
+    box-shadow: 
+        0 0 6px 2px rgba(0, 198, 255, 0.5),
+        0 0 10px 4px rgba(0, 114, 255, 0.3);
+    opacity: 0;
+    z-index: 5 !important; /* Giảm z-index để hiển thị dưới ảnh */
+    pointer-events: none;
+    transition: opacity 1.5s ease-out, transform 3s ease-out;
+}
+
+.lightning-effect .p1 {
+    top: 5px;
+    left: calc(var(--random-position1, 10%) + var(--random-offset1, 20px));
+    animation: floatingParticle1 3.8s ease-in-out infinite;
+    animation-delay: calc(var(--random-delay1, 0.2s));
+}
+
+.lightning-effect .p2 {
+    top: 5px;
+    right: calc(var(--random-position2, 30%) + var(--random-offset2, 20px));
+    animation: floatingParticle2 4.1s ease-in-out infinite;
+    animation-delay: calc(var(--random-delay2, 1.5s));
+}
+
+.lightning-effect .p3 {
+    top: calc(var(--random-position3, 20%) + var(--random-offset3, 15px));
+    right: 5px;
+    animation: floatingParticle3 3.9s ease-in-out infinite;
+    animation-delay: calc(var(--random-delay3, 0.7s));
+}
+
+.lightning-effect .p4 {
+    bottom: calc(var(--random-position4, 40%) + var(--random-offset4, 15px));
+    right: 5px;
+    animation: floatingParticle4 3.4s ease-in-out infinite;
+    animation-delay: calc(var(--random-delay4, 1.1s));
+}
+
+.lightning-effect .p5 {
+    bottom: 5px;
+    right: calc(var(--random-position5, 20%) + var(--random-offset5, 20px));
+    animation: floatingParticle5 3.7s ease-in-out infinite;
+    animation-delay: calc(var(--random-delay5, 0.5s));
+}
+
+.lightning-effect .p6 {
+    bottom: 5px;
+    left: calc(var(--random-position6, 30%) + var(--random-offset6, 20px));
+    animation: floatingParticle6 4.2s ease-in-out infinite;
+    animation-delay: calc(var(--random-delay6, 0.3s));
+}
+
+.lightning-effect .p7 {
+    bottom: calc(var(--random-position7, 35%) + var(--random-offset7, 15px));
+    left: 5px;
+    animation: floatingParticle7 4.0s ease-in-out infinite;
+    animation-delay: calc(var(--random-delay7, 1.8s));
+}
+
+.lightning-effect .p8 {
+    top: calc(var(--random-position8, 30%) + var(--random-offset8, 15px));
+    left: 5px;
+    animation: floatingParticle8 3.6s ease-in-out infinite;
+    animation-delay: calc(var(--random-delay8, 0.9s));
+}
+
+@keyframes floatingParticle1 {
+    0% { opacity: 0; transform: translate(0, 0); }
+    3% { opacity: 0.3; }
+    8% { opacity: 0.9; }
+    15% { transform: translate(calc(35% + var(--random-x1, 5px)), calc(var(--random-y1, 3px))); }
+    30% { transform: translate(calc(70% + var(--random-x1, 5px)), calc(var(--random-y1, 5px))); }
+    50% { opacity: 0.9; transform: translate(calc(100% + var(--random-x1, 0px)), calc(var(--random-y1, 0px))); }
+    70% { opacity: 0.7; transform: translate(calc(70% + var(--random-x1, 8px)), calc(-1 * var(--random-y1, 5px))); }
+    90% { transform: translate(calc(30% + var(--random-x1, 0px)), calc(-1 * var(--random-y1, 8px))); opacity: 0.3; }
+    100% { opacity: 0; transform: translate(0, 0); }
+}
+
+@keyframes floatingParticle2 {
+    0% { opacity: 0; transform: translate(0, 0); }
+    3% { opacity: 0.3; }
+    8% { opacity: 0.9; }
+    25% { transform: translate(calc(var(--random-x2, -5px)), calc(30% + var(--random-y2, 5px))); }
+    45% { transform: translate(calc(var(--random-x2, -8px)), calc(60% + var(--random-y2, 8px))); }
+    65% { opacity: 0.9; transform: translate(calc(var(--random-x2, -5px)), calc(85% + var(--random-y2, 10px))); }
+    85% { opacity: 0.6; transform: translate(calc(var(--random-x2, -10px)), calc(110% + var(--random-y2, 5px))); }
+    95% { transform: translate(calc(var(--random-x2, -5px)), calc(130% + var(--random-y2, 10px))); opacity: 0.3; }
+    100% { opacity: 0; transform: translate(0, 0); }
+}
+
+@keyframes floatingParticle3 {
+    0% { opacity: 0; transform: translate(0, 0); }
+    3% { opacity: 0.3; }
+    6% { opacity: 0.9; }
+    20% { transform: translate(calc(var(--random-x3, -5px)), calc(25% + var(--random-y3, 5px))); }
+    40% { opacity: 0.9; transform: translate(calc(var(--random-x3, -8px)), calc(55% + var(--random-y3, 10px))); }
+    65% { opacity: 0.7; transform: translate(calc(var(--random-x3, -12px)), calc(75% + var(--random-y3, 15px))); }
+    90% { transform: translate(calc(var(--random-x3, -15px)), calc(105% + var(--random-y3, 5px))); opacity: 0.3; }
+    100% { opacity: 0; transform: translate(0, 0); }
+}
+
+@keyframes floatingParticle4 {
+    0% { opacity: 0; transform: translate(0, 0); }
+    4% { opacity: 0.3; }
+    8% { opacity: 0.9; }
+    25% { transform: translate(calc(-35% - var(--random-x4, 5px)), calc(25% + var(--random-y4, 5px))); }
+    50% { opacity: 0.9; transform: translate(calc(-65% - var(--random-x4, 10px)), calc(40% + var(--random-y4, 10px))); }
+    75% { opacity: 0.7; transform: translate(calc(-95% - var(--random-x4, 5px)), calc(60% + var(--random-y4, 5px))); }
+    92% { transform: translate(calc(-125% - var(--random-x4, 10px)), calc(45% + var(--random-y4, 0px))); opacity: 0.3; }
+    100% { opacity: 0; transform: translate(0, 0); }
+}
+
+@keyframes floatingParticle5 {
+    0% { opacity: 0; transform: translate(0, 0); }
+    3% { opacity: 0.3; }
+    7% { opacity: 0.9; }
+    25% { transform: translate(calc(-35% - var(--random-x5, 5px)), calc(var(--random-y5, 0px))); }
+    45% { transform: translate(calc(-65% - var(--random-x5, 10px)), calc(var(--random-y5, 0px))); }
+    65% { opacity: 0.9; transform: translate(calc(-95% - var(--random-x5, 15px)), calc(var(--random-y5, 0px))); }
+    85% { opacity: 0.6; transform: translate(calc(-125% - var(--random-x5, 5px)), calc(var(--random-y5, 0px))); }
+    95% { transform: translate(calc(-150% - var(--random-x5, 10px)), calc(var(--random-y5, 0px))); opacity: 0.3; }
+    100% { opacity: 0; transform: translate(0, 0); }
+}
+
+@keyframes floatingParticle6 {
+    0% { opacity: 0; transform: translate(0, 0); }
+    3% { opacity: 0.3; }
+    6% { opacity: 0.9; }
+    25% { transform: translate(calc(-25% - var(--random-x6, 8px)), calc(-25% - var(--random-y6, 5px))); }
+    45% { transform: translate(calc(-45% - var(--random-x6, 12px)), calc(-55% - var(--random-y6, 10px))); }
+    65% { opacity: 0.9; transform: translate(calc(-75% - var(--random-x6, 15px)), calc(-85% - var(--random-y6, 15px))); }
+    85% { opacity: 0.6; transform: translate(calc(-105% - var(--random-x6, 5px)), calc(-115% - var(--random-y6, 5px))); }
+    95% { transform: translate(calc(-135% - var(--random-x6, 10px)), calc(-130% - var(--random-y6, 10px))); opacity: 0.3; }
+    100% { opacity: 0; transform: translate(0, 0); }
+}
+
+@keyframes floatingParticle7 {
+    0% { opacity: 0; transform: translate(0, 0); }
+    3% { opacity: 0.3; }
+    5% { opacity: 0.9; }
+    20% { transform: translate(calc(var(--random-x7, 0px)), calc(-30% - var(--random-y7, 5px))); }
+    40% { opacity: 0.9; transform: translate(calc(var(--random-x7, 0px)), calc(-60% - var(--random-y7, 10px))); }
+    65% { opacity: 0.7; transform: translate(calc(var(--random-x7, 0px)), calc(-85% - var(--random-y7, 15px))); }
+    90% { transform: translate(calc(var(--random-x7, 0px)), calc(-115% - var(--random-y7, 5px))); opacity: 0.3; }
+    100% { opacity: 0; transform: translate(0, 0); }
+}
+
+@keyframes floatingParticle8 {
+    0% { opacity: 0; transform: translate(0, 0); }
+    3% { opacity: 0.3; }
+    7% { opacity: 0.9; }
+    15% { opacity: 0.4; transform: translate(calc(15% + var(--random-x8, 5px)), calc(25% - var(--random-y8, 5px))); }
+    25% { opacity: 0.8; transform: translate(calc(25% + var(--random-x8, 5px)), calc(35% - var(--random-y8, 5px))); }
+    35% { opacity: 0.3; transform: translate(calc(40% + var(--random-x8, 10px)), calc(50% - var(--random-y8, 2px))); }
+    45% { opacity: 0.9; transform: translate(calc(50% + var(--random-x8, 10px)), calc(60% - var(--random-y8, 2px))); }
+    60% { opacity: 0.4; transform: translate(calc(65% + var(--random-x8, 5px)), calc(50% + var(--random-y8, 0px))); }
+    70% { opacity: 0.7; transform: translate(calc(55% + var(--random-x8, 5px)), calc(40% + var(--random-y8, 0px))); }
+    80% { opacity: 0.5; transform: translate(calc(40% + var(--random-x8, 10px)), calc(30% + var(--random-y8, 5px))); }
+    90% { opacity: 0.3; transform: translate(calc(25% + var(--random-x8, 10px)), calc(20% + var(--random-y8, 5px))); }
+    100% { opacity: 0; transform: translate(0, 0); }
+}
+
+/* Hiệu ứng ánh sáng phát ra từ bên trong */
+.lightning-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.lightning-item .inner-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 30% 70%,
+        rgba(0, 198, 255, 0.2),
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.lightning-item:hover .inner-glow {
+    opacity: 1;
+}
+
+/* Hiệu ứng chớp sáng khi hover */
+.lightning-item .flash {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 150, 255, 0.15);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.lightning-item:hover .flash {
+    animation: flash 2s ease-out;
+}
+
+@keyframes flash {
+    0% { opacity: 0.6; }
+    100% { opacity: 0; }
+}
+
+/* Hiệu ứng góc trang trí */
+.lightning-item .corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 4;
+    transition: all 0.4s ease-out;
+}
+
+.lightning-item .corner-tl {
+    top: 0;
+    left: 0;
+    border-top: 3px solid transparent;
+    border-left: 3px solid transparent;
+    border-top-left-radius: 8px;
+    background: linear-gradient(135deg, #00c6ff, transparent 80%);
+    filter: drop-shadow(0 0 4px rgba(0, 198, 255, 0.8));
+}
+
+.lightning-item .corner-tr {
+    top: 0;
+    right: 0;
+    border-top: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top-right-radius: 8px;
+    background: linear-gradient(225deg, #0072ff, transparent 80%);
+    filter: drop-shadow(0 0 4px rgba(0, 114, 255, 0.8));
+}
+
+.lightning-item .corner-bl {
+    bottom: 0;
+    left: 0;
+    border-bottom: 3px solid transparent;
+    border-left: 3px solid transparent;
+    border-bottom-left-radius: 8px;
+    background: linear-gradient(45deg, #0072ff, transparent 80%);
+    filter: drop-shadow(0 0 4px rgba(0, 114, 255, 0.8));
+}
+
+.lightning-item .corner-br {
+    bottom: 0;
+    right: 0;
+    border-bottom: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom-right-radius: 8px;
+    background: linear-gradient(315deg, #00c6ff, transparent 80%);
+    filter: drop-shadow(0 0 4px rgba(0, 198, 255, 0.8));
+}
+
+.lightning-item:hover .corner {
+    animation: none;
+    opacity: 1;
+    width: 50px;
+    height: 50px;
+}
+
+.lightning-item:hover .corner-tl {
+    transform: translate(-5px, -5px);
+}
+
+.lightning-item:hover .corner-tr {
+    transform: translate(5px, -5px);
+}
+
+.lightning-item:hover .corner-bl {
+    transform: translate(-5px, 5px);
+}
+
+.lightning-item:hover .corner-br {
+    transform: translate(5px, 5px);
+}
+
+/* Hiệu ứng sao băng - cải tiến để nằm trên ảnh và không tràn ra ngoài */
+.card {
+    overflow: hidden;
+    position: relative;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0), 
+        rgba(255, 255, 255, 0.5) 20%, 
+        rgba(70, 200, 255, 0.6) 40%, 
+        rgba(30, 100, 255, 0.3));
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+    opacity: 0;
+    z-index: 20 !important; /* Giữ z-index cao để nằm trên ảnh */
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.shooting-star::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -1px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 8px 1px rgba(70, 200, 255, 0.6);
+}
+
+.card .shooting-star-1 {
+    top: -60px;
+    left: 30%;
+    animation: shootingStar1 6s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+.card .shooting-star-2 {
+    top: -80px;
+    left: 60%;
+    animation: shootingStar2 8s ease-in-out infinite;
+    animation-delay: 5s;
+}
+
+.card .shooting-star-3 {
+    top: -70px;
+    left: 20%;
+    animation: shootingStar3 7s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+@keyframes shootingStar1 {
+    0%, 100% { 
+        opacity: 0; 
+        transform: rotate(15deg) translateY(0);
+    }
+    10%, 15% { 
+        opacity: 1; 
+    }
+    30% { 
+        opacity: 0; 
+        transform: rotate(15deg) translateY(300px);
+    }
+}
+
+@keyframes shootingStar2 {
+    0%, 100% { 
+        opacity: 0; 
+        transform: rotate(-10deg) translateY(0);
+    }
+    10%, 15% { 
+        opacity: 1; 
+    }
+    35% { 
+        opacity: 0; 
+        transform: rotate(-10deg) translateY(350px);
+    }
+}
+
+@keyframes shootingStar3 {
+    0%, 100% { 
+        opacity: 0; 
+        transform: rotate(25deg) translateY(0);
+    }
+    10%, 15% { 
+        opacity: 1; 
+    }
+    25% { 
+        opacity: 0; 
+        transform: rotate(25deg) translateY(250px);
+    }
+}
+
+/* Hiệu ứng mạng nhện kết nối */
+.lightning-effect {
+    overflow: visible;
+    position: relative;
+}
+
+.lightning-effect .web-container {
+    position: absolute !important;
+    inset: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none;
+    z-index: 5 !important; /* Giảm z-index để hiển thị dưới ảnh */
+}
+
+.lightning-effect .web-line {
+    position: absolute;
+    /* Sử dụng đường viền màu xanh nước biển đậm hơn */
+    border-top: 2px solid #0033FF !important; /* Tăng độ dày lên 2px và màu đậm hơn */
+    background: transparent !important;
+    height: 0 !important; /* Sử dụng border thay vì background */
+    transform-origin: left center;
+    opacity: 0;
+    animation: webLineOpacity 3s ease-in-out infinite;
+    border-radius: 0;
+    pointer-events: none;
+    /* Tăng độ nổi bật với bóng đổ mạnh hơn */
+    filter: none !important; /* Bỏ drop-shadow để tránh mờ và dùng box-shadow thay thế */
+    /* Tạo viền nổi bật với màu xanh đậm */
+    box-shadow: 
+        0 0 0 1px #0033FF, /* Outline sắc nét */
+        0 0 3px 0 #0033FF; /* Tăng kích thước bóng đổ */
+    transition: left 0.3s ease-out, top 0.3s ease-out, width 0.3s ease-out, transform 0.3s ease-out, opacity 0.3s ease-out;
+    z-index: 5 !important; /* Giảm z-index để hiển thị dưới ảnh */
+    will-change: transform, opacity, left, top, width;
+    image-rendering: -webkit-optimize-contrast; /* Tăng độ sắc nét trên Chrome */
+    image-rendering: crisp-edges; /* Tăng độ sắc nét trên các trình duyệt khác */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes webLineOpacity {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* ===== CSS HIỆU ỨNG ĐOM ĐÓM, SAO BĂNG VÀ MẠNG NHỆN ===== */
+
+/* Xoá hiệu ứng viền khi hover */
+.lightning-border::before, .lightning-border::after {
+    display: none !important;
+}
+
+/* Reset các thuộc tính overflow */
+.card.lightning-effect {
+    overflow: hidden !important;
+    position: relative !important;
+    z-index: 1;
+}
+
+/* Hiệu ứng đom đóm */
+.lightning-effect .floating-particle {
+    position: absolute !important;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 20%, rgba(0, 198, 255, 0.7) 70%);
+    box-shadow: 
+        0 0 6px 2px rgba(0, 198, 255, 0.5),
+        0 0 10px 4px rgba(0, 114, 255, 0.3);
+    opacity: 0;
+    z-index: 5 !important; /* Giảm z-index để hiển thị dưới ảnh */
+    pointer-events: none;
+    transition: opacity 1.5s ease-out, transform 3s ease-out;
+}
+
+/* Hiệu ứng sao băng cải tiến - bay từ trên xuống */
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0), 
+        rgba(255, 255, 255, 0.5) 20%, 
+        rgba(70, 200, 255, 0.6) 40%, 
+        rgba(30, 100, 255, 0.3));
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+    opacity: 0;
+    z-index: 20 !important; /* Giữ z-index cao để nằm trên ảnh */
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.shooting-star::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -1px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 8px 1px rgba(70, 200, 255, 0.6);
+}
+
+.card .shooting-star-1 {
+    top: -60px;
+    left: 30%;
+    animation: shootingStar1 6s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+.card .shooting-star-2 {
+    top: -80px;
+    left: 60%;
+    animation: shootingStar2 8s ease-in-out infinite;
+    animation-delay: 5s;
+}
+
+.card .shooting-star-3 {
+    top: -70px;
+    left: 20%;
+    animation: shootingStar3 7s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+@keyframes shootingStar1 {
+    0%, 100% { 
+        opacity: 0; 
+        transform: rotate(15deg) translateY(0);
+    }
+    10%, 15% { 
+        opacity: 1; 
+    }
+    30% { 
+        opacity: 0; 
+        transform: rotate(15deg) translateY(300px);
+    }
+}
+
+@keyframes shootingStar2 {
+    0%, 100% { 
+        opacity: 0; 
+        transform: rotate(-10deg) translateY(0);
+    }
+    10%, 15% { 
+        opacity: 1; 
+    }
+    35% { 
+        opacity: 0; 
+        transform: rotate(-10deg) translateY(350px);
+    }
+}
+
+@keyframes shootingStar3 {
+    0%, 100% { 
+        opacity: 0; 
+        transform: rotate(25deg) translateY(0);
+    }
+    10%, 15% { 
+        opacity: 1; 
+    }
+    25% { 
+        opacity: 0; 
+        transform: rotate(25deg) translateY(250px);
+    }
+}
+
+/* Hiệu ứng mạng nhện */
+.lightning-effect .web-container {
+    position: absolute !important;
+    inset: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none;
+    z-index: 5 !important; /* Giảm z-index để hiển thị dưới ảnh */
+}
+
+.lightning-effect .web-line {
+    position: absolute;
+    /* Sử dụng đường viền màu xanh nước biển đậm hơn */
+    border-top: 2px solid #0033FF !important; /* Tăng độ dày lên 2px và màu đậm hơn */
+    background: transparent !important;
+    height: 0 !important; /* Sử dụng border thay vì background */
+    transform-origin: left center;
+    opacity: 0;
+    animation: webLineOpacity 3s ease-in-out infinite;
+    border-radius: 0;
+    pointer-events: none;
+    /* Tăng độ nổi bật với bóng đổ mạnh hơn */
+    filter: none !important; /* Bỏ drop-shadow để tránh mờ và dùng box-shadow thay thế */
+    /* Tạo viền nổi bật với màu xanh đậm */
+    box-shadow: 
+        0 0 0 1px #0033FF, /* Outline sắc nét */
+        0 0 3px 0 #0033FF; /* Tăng kích thước bóng đổ */
+    transition: left 0.3s ease-out, top 0.3s ease-out, width 0.3s ease-out, transform 0.3s ease-out, opacity 0.3s ease-out;
+    z-index: 5 !important; /* Giảm z-index để hiển thị dưới ảnh */
+    will-change: transform, opacity, left, top, width;
+    image-rendering: -webkit-optimize-contrast; /* Tăng độ sắc nét trên Chrome */
+    image-rendering: crisp-edges; /* Tăng độ sắc nét trên các trình duyệt khác */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes webLineOpacity {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Đảm bảo ảnh hiển thị trên đom đóm và mạng nhện, dưới sao băng */
+.card-image, .card img, .relative, .overflow-hidden, .card-content {
+    position: relative;
+    z-index: 15 !important; /* Đặt z-index ở giữa (cao hơn đom đóm/mạng nhện, thấp hơn sao băng) */
+}
