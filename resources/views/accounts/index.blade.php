@@ -38,9 +38,9 @@
             
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
                 @foreach($categories as $category)
-                <a href="{{ route('account.category', $category->slug) }}" class="block group">
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px]">
-                        <div class="h-36 overflow-hidden relative">
+                <a href="{{ route('account.category', $category->slug) }}" class="block group h-full">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px] h-full flex flex-col">
+                        <div class="h-36 overflow-hidden relative flex-shrink-0">
                             @if($category->image)
                             <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             @else
@@ -52,8 +52,8 @@
                             @endif
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{{ $category->name }}</h3>
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <h3 class="font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 min-h-[2.5rem]">{{ $category->name }}</h3>
                             <div class="flex items-center justify-between mt-2">
                                 <span class="text-sm text-gray-600">{{ $category->accounts()->where('status', 'available')->count() }} tài khoản</span>
                                 <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
@@ -127,7 +127,7 @@
         
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
             @foreach($accounts as $account)
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 lightning-effect lightning-item">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 lightning-effect lightning-item h-full flex flex-col">
                 <div class="inner-glow"></div>
                 <div class="flash"></div>
                 <div class="corner corner-tl"></div>
@@ -165,7 +165,7 @@
                     </div>
                 </div>
                 
-                <div class="p-5">
+                <div class="p-5 flex-1 flex flex-col">
                     <div class="flex items-center justify-between mb-3">
                         <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">{{ $account->game->name }}</span>
                         @if($account->is_verified)
@@ -177,27 +177,31 @@
                         </span>
                         @endif
                     </div>
-                    
-                    <h3 class="font-bold text-gray-900 mb-2 text-lg line-clamp-2">{{ $account->title }}</h3>
-                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">{{ $account->description }}</p>
-                    
-                    @if($account->attributes && is_array($account->attributes) && count($account->attributes) > 0)
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        @foreach(array_slice($account->attributes, 0, 3) as $key => $value)
-                        <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">
-                            {{ $key }}: {{ $value }}
-                        </span>
-                        @endforeach
-                        
-                        @if(count($account->attributes) > 3)
-                        <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">
-                            +{{ count($account->attributes) - 3 }}
-                        </span>
+
+                    <div class="flex-1">
+                        <h3 class="font-bold text-gray-900 mb-2 text-lg line-clamp-2 min-h-[3.5rem]">{{ $account->title }}</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2 min-h-[2.5rem]">{{ $account->description }}</p>
+
+                        @if($account->attributes && is_array($account->attributes) && count($account->attributes) > 0)
+                        <div class="flex flex-wrap gap-2 mb-4 min-h-[2rem]">
+                            @foreach(array_slice($account->attributes, 0, 3) as $key => $value)
+                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">
+                                {{ $key }}: {{ $value }}
+                            </span>
+                            @endforeach
+
+                            @if(count($account->attributes) > 3)
+                            <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded">
+                                +{{ count($account->attributes) - 3 }}
+                            </span>
+                            @endif
+                        </div>
+                        @else
+                        <div class="mb-4 min-h-[2rem]"></div>
                         @endif
                     </div>
-                    @endif
-                    
-                    <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+
+                    <div class="flex items-center justify-between pt-3 border-t border-gray-100 mt-auto">
                         <div>
                             <span class="text-xl font-bold text-blue-600">{{ number_format($account->price, 0, ',', '.') }}đ</span>
                             @if($account->original_price && $account->original_price > $account->price)
