@@ -15,7 +15,7 @@
                         </svg>
                     </div>
                     <h2 class="text-2xl font-bold mb-3">Thanh toán thành công!</h2>
-                    <p class="text-lg mb-6">Cảm ơn bạn đã mua sắm tại ShopBuffsao. Chúng tôi đã xác nhận đơn hàng của bạn.</p>
+                    <p class="text-lg mb-6">Cảm ơn bạn đã mua sắm tại Shopkaia3. Chúng tôi đã xác nhận đơn hàng của bạn.</p>
                     <div class="mb-3 space-y-3">
                         <div class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-400" viewBox="0 0 20 20" fill="currentColor">

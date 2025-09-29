@@ -51,7 +51,7 @@
                             <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <input id="name" name="name" type="text" value="{{ old('name') }}" required autofocus
+                    <input id="name" name="name" type="text" value="{{ old('name') }}" placeholder="Nhập họ tên của bạn" required autofocus
                         class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base">
                 </div>
             </div>
@@ -67,7 +67,7 @@
                             <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <input id="email" name="email" type="text" value="{{ old('email') }}" required
+                    <input id="email" name="email" type="text" value="{{ old('email') }}" placeholder="Nhập tên đăng nhập" required
                         class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base">
                 </div>
                 <p class="mt-1 text-xs text-gray-500">Tên đăng nhập chỉ được chứa chữ cái thường và số</p>
@@ -84,7 +84,7 @@
                             <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <input id="password" name="password" type="password" required
+                    <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" required
                         class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base">
                 </div>
                 <p class="mt-1 text-xs text-gray-500">Mật khẩu phải có ít nhất 8 ký tự</p>
@@ -101,7 +101,7 @@
                             <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <input id="password_confirmation" name="password_confirmation" type="password" required
+                    <input id="password_confirmation" name="password_confirmation" type="password" placeholder="Nhập lại mật khẩu" required
                         class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base">
                 </div>
             </div>

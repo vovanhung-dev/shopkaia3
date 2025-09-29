@@ -9,254 +9,108 @@
 @endsection-->
 
 @section('content')
-    <!-- Hero Banner -->
-    <div class="relative">
-        <div class="bg-gradient-to-r from-indigo-700/80 to-blue-500/80 text-white relative overflow-hidden">
-            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat animate-zoom-in-out overflow-hidden" style="background-image: url('{{ asset('images/banner.jpeg') }}')"></div>
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 mb-16 relative">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div data-aos="fade-right">
-                        <h1 class="welcome-text">
-                        SHOPBUFFSAO XIN KÍNH CHÀO <span class="text-yellow-300"> QUÝ KHÁCH</span>
-                        </h1>
-                        <!--<p class="text-xl mb-8 text-gray-200 leading-relaxed animate-fade-in-up animate-delay-100 shadow-black-text">
-                            Chúng tôi cung cấp các tài khoản game uy tín, giá tốt nhất thị trường, giao dịch an toàn, bảo mật.
-                        </p>-->
-                        <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up animate-delay-200">
-                        <!-- Nút Xem tài khoản -->
-                        <a href="{{ route('accounts.index') }}"
-                        class="animated-opacity text-white font-bold px-6 py-3 text-lg rounded-xl shadow-xl flex items-center justify-center gap-2 transition-all duration-500 ease-in-out">
-                        <i class="bi bi-controller text-xl"></i>
-                        <span>Xem tài khoản</span>
-                        </a>
 
 
-
-
-
-
-
-                        <!-- Nút Tìm hiểu thêm (bật nếu cần) -->
-                        <!--
-                        <a href="{{ route('about') }}"
-                        class="group border-2 border-white text-white font-semibold px-6 py-3 text-lg rounded-xl hover:bg-white hover:text-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center gap-2">
-                            <i class="bi bi-info-circle text-xl group-hover:scale-110 transition-transform duration-300"></i>
-                            <span>Tìm hiểu thêm</span>
-                        </a>
-                        -->
-                    </div>
-
-                    </div>
-                    <div class="hidden md:block" data-aos="fade-left">
-                        <div class="relative">
-                            <div class="absolute -inset-4 bg-white/10 rounded-2xl blur-xl"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Wave effect -->
-            <div class="absolute bottom-0 left-0 right-0">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" class="w-full">
-                    <path fill="#f9fafb" fill-opacity="1" d="M0,32L80,42.7C160,53,320,75,480,74.7C640,75,800,53,960,37.3C1120,21,1280,11,1360,5.3L1440,0L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"></path>
-                </svg>
-            </div>
-        </div>
-    </div>
-
-    <!-- Danh mục tài khoản -->
-    <!--<div class="bg-gray-50 py-16">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-10 text-center" data-aos="fade-up">
-                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium inline-block px-2.5 py-1 rounded-full">DANH MỤC TÀI KHOẢN</span>
-                <h2 class="text-3xl font-bold text-gray-800 mb-2 mt-2">SPAM KHẮP ĐẢO KAIA</h2>
-                <div class="divider"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Cập nhật liên tục các tài khoản mới nhất với nhiều ưu đãi hấp dẫn</p>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            @foreach($accountCategories as $category)
-                <div class="card hover-shadow lightning-border lightning-effect lightning-item" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                    <div class="floating-particle p1"></div>
-                    <div class="floating-particle p2"></div>
-                    <div class="floating-particle p3"></div>
-                    <div class="floating-particle p4"></div>
-                    <div class="floating-particle p5"></div>
-                    <div class="floating-particle p6"></div>
-                    <div class="floating-particle p7"></div>
-                    <div class="floating-particle p8"></div>
-                    <div class="inner-glow"></div>
-                    <div class="flash"></div>
-                    <div class="corner corner-tl"></div>
-                    <div class="corner corner-tr"></div>
-                    <div class="corner corner-bl"></div>
-                    <div class="corner corner-br"></div>
-                    <div class="shooting-star shooting-star-1"></div>
-                    <div class="shooting-star shooting-star-2"></div>
-                    <div class="shooting-star shooting-star-3"></div>
-                    <a href="{{ route('account.category', $category->slug) }}" class="block relative z-10">
-                        @if($category->image)
-                            <div class="overflow-hidden rounded-t-xl">
-                                <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" 
-                                    class="w-full h-52 object-cover transition-transform duration-500 hover:scale-110">
-                            </div>
-                        @else
-                            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 h-52 flex items-center justify-center rounded-t-xl">
-                                <span class="text-white text-2xl font-bold px-4 text-center">{{ $category->name }}</span>
-                            </div>
-                        @endif
-                        <div class="p-5">
-                            <h3 class="text-xl font-bold mb-2 text-gray-800 group-hover:text-indigo-600 transition-colors">{{ $category->name }}</h3>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-2 h-10">{{ $category->description }}</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-indigo-600 font-medium flex items-center">
-                                    Xem tài khoản
-                                    <i class="bi bi-arrow-right ml-1"></i>
-                                </span>
-                                <span class="badge badge-blue">
-                                    {{ $category->accounts()->where('status', 'available')->count() }} tài khoản
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-            </div>
-            
-            <div class="mt-12 text-center" data-aos="fade-up">
-                <a href="{{ route('account.categories') }}" class="btn-primary px-8 py-3 flex items-center justify-center mx-auto w-auto max-w-xs">
-                    <i class="bi bi-grid-3x3-gap mr-2"></i>
-                    Xem tất cả danh mục
-                </a>
-            </div>
-        </div>
-    </div>-->
-
-    <!-- Dịch vụ nổi bật -->
-    @if(isset($services) && $services->count() > 0)
+    <!-- ACC PLAY TOGETHER -->
     <div class="bg-white py-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-10 text-center" data-aos="fade-up">
-                <span class="bg-blue-100 text-blue-800 text-xs font-medium inline-block px-2.5 py-1 rounded-full">DỊCH VỤ HÀNG ĐẦU</span>
-                <h2 class="text-3xl font-bold text-gray-800 mb-2 mt-2">Khu vực dịch vụ</h2>
-                <div class="divider"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Dịch vụ uy tín từ các ShopBuffsao</p>
+            <div class="mb-10 text-center">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">DANH SÁCH DỊCH VỤ</h2>
+                <div class="w-24 h-1 bg-blue-500 mx-auto rounded-full"></div>
             </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                @foreach($services as $service)
-                <div class="group card card-hover-effect lightning-effect lightning-item" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                    <div class="inner-glow"></div>
-                    <div class="flash"></div>
-                    <div class="corner corner-tl"></div>
-                    <div class="corner corner-tr"></div>
-                    <div class="corner corner-bl"></div>
-                    <div class="corner corner-br"></div>
-                    <div class="shooting-star shooting-star-1"></div>
-                    <div class="shooting-star shooting-star-2"></div>
-                    <div class="shooting-star shooting-star-3"></div>
-                    <a href="{{ route('services.show', $service->slug) }}" class="block relative z-10">
-                        <div class="relative h-48 overflow-hidden rounded-t-xl">
-                            @if($service->image)
-                                <img src="{{ asset($service->image) }}" alt="{{ $service->name }}" 
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            @else
-                                <div class="w-full h-full bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center">
-                                    <i class="bi bi-play-circle text-white text-6xl"></i>
-                                </div>
-                            @endif
-                            @if($service->is_featured)
-                                <div class="absolute top-2 right-2">
-                                    <span class="bg-yellow-500/80 text-white text-xs font-medium px-2.5 py-1 rounded flex items-center backdrop-blur-sm">
-                                        <i class="bi bi-star-fill mr-1"></i>
-                                        Nổi bật
-                                    </span>
-                                </div>
-                            @endif
-                        </div>
-                    </a>
-                    
-                    <div class="p-5">
-                        <a href="{{ route('services.show', $service->slug) }}" class="block">
-                            <h3 class="font-bold text-gray-800 mb-2 hover:text-indigo-600 transition text-center auto-shrink">{{ $service->name }}</h3>
-                        </a>
-                        
-                        <p class="text-gray-600 text-sm mb-4 line-clamp-1 h-6 overflow-hidden whitespace-normal text-center">Hoàn thành: {{ rand(10, 100) }}</p>
-                        
-                        <div class="flex items-center justify-between">
-                            <div class="text-indigo-600 font-semibold">
-                                @if($service->packages->count() > 0)
-                                    Từ {{ number_format($service->packages->min('price'), 0, ',', '.') }}đ
-                                @else
-                                    Liên hệ báo giá
-                                @endif
+
+            <!-- Display all services in a grid -->
+            @if(isset($allServices) && $allServices->count() > 0)
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                @foreach($allServices as $service)
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-48">
+                        @if($service->image)
+                            <img src="{{ asset($service->image) }}" alt="{{ $service->name }}"
+                                class="w-full h-full object-cover">
+                        @else
+                            <div class="w-full h-full bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center">
+                                <i class="bi bi-controller text-white text-4xl"></i>
                             </div>
-                            <a href="{{ route('services.show', $service->slug) }}" 
-                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-indigo-300 transition">
-                                <span>Chi tiết</span>
-                                <i class="bi bi-chevron-right ml-1"></i>
+                        @endif
+                    </div>
+
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-orange-500 mb-2 text-center uppercase">{{ $service->name }}</h3>
+
+                        <div class="text-center mb-3">
+                            <p class="text-gray-600 text-sm">Đã bán: <span class="font-semibold">{{ rand(500, 20000) }}</span></p>
+                            <p class="text-gray-600 text-sm">Còn lại: <span class="font-semibold">{{ rand(10, 2000) }}</span></p>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="{{ route('services.show', $service->slug) }}"
+                               class="bg-gradient-to-r from-orange-400 to-red-500 text-white px-6 py-2 rounded-full font-bold text-sm hover:from-orange-500 hover:to-red-600 transition-all duration-300 inline-block">
+                                XEM TẤT CẢ
                             </a>
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
-            
-            <div class="mt-12 text-center" data-aos="fade-up">
-                <a href="{{ route('services.index') }}" class="btn-primary px-8 py-3 flex items-center justify-center mx-auto w-auto max-w-xs">
-                    <i class="bi bi-grid-3x3-gap mr-2"></i>
-                    Xem tất cả dịch vụ
-                </a>
-            </div>
-        </div>
-    </div>
-    @endif
+            @endif
 
-     <!-- Lý do chọn chúng tôi -->
-     <div class="bg-gradient-to-r from-indigo-700 to-blue-700 text-white py-16">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-10 text-center" data-aos="fade-up">
-                <span class="bg-white/20 text-white text-xs font-medium inline-block px-2.5 py-1 rounded-full backdrop-blur-sm">VÌ SAO CHỌN CHÚNG TÔI</span>
-                <h2 class="text-3xl font-bold mb-2 mt-2">Tại sao chọn chúng tôi?</h2>
-                <div class="w-16 sm:w-24 h-1 bg-white/20 rounded-full mx-auto my-4"></div>
-                <p class="text-gray-200 max-w-2xl mx-auto">Chúng tôi cam kết mang đến cho bạn trải nghiệm mua tài khoản game tốt nhất</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="bg-white/10 rounded-xl p-6 mb-6 w-20 h-20 flex items-center justify-center backdrop-blur-sm">
-                        <i class="bi bi-patch-check text-4xl"></i>
+            @if(!isset($allServices) || $allServices->count() == 0)
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Sample cards to match the image -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-48">
+                        <div class="w-full h-full bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center">
+                            <span class="text-white text-xl font-bold text-center px-4">NICK CÓ NHIỀU TIEN SAO<br>THUẬN 1997</span>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Uy tín hàng đầu</h3>
-                    <p class="text-gray-200">Chúng tôi cam kết cung cấp tài khoản chất lượng, đúng như mô tả, mang đến sự hài lòng cho khách hàng.</p>
-                </div>
-                
-                <div class="text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="bg-white/10 rounded-xl p-6 mb-6 w-20 h-20 flex items-center justify-center backdrop-blur-sm">
-                        <i class="bi bi-shield-check text-4xl"></i>
+
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-orange-500 mb-2 text-center uppercase">NICK CÓ NHIỀU TIEN SAO</h3>
+
+                        <div class="text-center mb-3">
+                            <p class="text-gray-600 text-sm">Đã bán: <span class="font-semibold">6492</span></p>
+                            <p class="text-gray-600 text-sm">Còn lại: <span class="font-semibold">2073</span></p>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="#" class="bg-gradient-to-r from-orange-400 to-red-500 text-white px-6 py-2 rounded-full font-bold text-sm hover:from-orange-500 hover:to-red-600 transition-all duration-300 inline-block">
+                                XEM TẤT CẢ
+                            </a>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">An toàn & Bảo mật</h3>
-                    <p class="text-gray-200">Giao dịch an toàn, bảo mật thông tin khách hàng tuyệt đối, thanh toán đa dạng qua nhiều hình thức.</p>
                 </div>
-                
-                <div class="text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="bg-white/10 rounded-xl p-6 mb-6 w-20 h-20 flex items-center justify-center backdrop-blur-sm">
-                        <i class="bi bi-headset text-4xl"></i>
+
+                <!-- Add more sample cards to fill the grid -->
+                @for($i = 1; $i <= 6; $i++)
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+                    <div class="relative h-48">
+                        <div class="w-full h-full bg-gradient-to-br from-purple-400 to-blue-600 flex items-center justify-center">
+                            <span class="text-white text-xl font-bold text-center px-4">DỊCH VỤ {{ $i }}</span>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Hỗ trợ 24/7</h3>
-                    <p class="text-gray-200">Đội ngũ hỗ trợ chuyên nghiệp, luôn sẵn sàng giải đáp mọi thắc mắc và hỗ trợ bạn khi cần.</p>
+
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-orange-500 mb-2 text-center uppercase">DỊCH VỤ {{ $i }}</h3>
+
+                        <div class="text-center mb-3">
+                            <p class="text-gray-600 text-sm">Đã bán: <span class="font-semibold">{{ rand(500, 10000) }}</span></p>
+                            <p class="text-gray-600 text-sm">Còn lại: <span class="font-semibold">{{ rand(10, 1000) }}</span></p>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="#" class="bg-gradient-to-r from-orange-400 to-red-500 text-white px-6 py-2 rounded-full font-bold text-sm hover:from-orange-500 hover:to-red-600 transition-all duration-300 inline-block">
+                                XEM TẤT CẢ
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                @endfor
             </div>
-            
-            <!-- CTA Button -->
-            <div class="mt-12 text-center" data-aos="fade-up">
-                <a href="{{ route('contact') }}" class="bg-white text-indigo-700 px-8 py-3 rounded-lg font-medium inline-flex items-center hover:bg-gray-100 transition-all transform hover:-translate-y-1 hover:shadow-xl">
-                    <i class="bi bi-chat-dots mr-2"></i>
-                    Liên hệ với chúng tôi
-                </a>
-            </div>
+            @endif
         </div>
     </div>
+
 @endsection 
 
 <style>

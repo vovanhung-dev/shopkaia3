@@ -57,7 +57,7 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Sidebar -->
-        <div class="lg:col-span-1" data-aos="fade-right">
+        <div class="lg:col-span-1">
             <div class="bg-white rounded-xl shadow-md overflow-hidden">
                 <div class="p-4 border-b border-gray-100">
                     <h3 class="text-lg font-semibold text-gray-800">Truy cập nhanh</h3>
@@ -111,7 +111,7 @@
         </div>
     
         <!-- Main Content -->
-        <div class="lg:col-span-2" data-aos="fade-left">
+        <div class="lg:col-span-2">
             <!-- Form cập nhật thông tin -->
             <div class="bg-white rounded-xl shadow-md overflow-hidden">
                 <div class="border-b border-gray-100">
@@ -151,7 +151,7 @@
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                         <i class="bi bi-person text-gray-400"></i>
                                     </div>
-                                    <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}" 
+                                    <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}" placeholder="Nhập họ tên của bạn"
                                         class="w-full pl-10 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 </div>
                                 @error('name')
@@ -166,7 +166,7 @@
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                         <i class="bi bi-envelope text-gray-400"></i>
                                     </div>
-                                    <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}" 
+                                    <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}" placeholder="Nhập email của bạn"
                                         class="w-full pl-10 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 </div>
                                 @error('email')
@@ -181,7 +181,7 @@
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                         <i class="bi bi-telephone text-gray-400"></i>
                                     </div>
-                                    <input type="text" name="phone" id="phone" value="{{ old('phone', $user->phone) }}" 
+                                    <input type="text" name="phone" id="phone" value="{{ old('phone', $user->phone) }}" placeholder="Nhập số điện thoại"
                                         class="w-full pl-10 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 </div>
                                 @error('phone')
@@ -207,7 +207,7 @@
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                         <i class="bi bi-lock text-gray-400"></i>
                                     </div>
-                                    <input type="password" name="current_password" id="current_password" 
+                                    <input type="password" name="current_password" id="current_password" placeholder="Nhập mật khẩu hiện tại"
                                         class="w-full pl-10 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 </div>
                                 @error('current_password')
@@ -222,7 +222,7 @@
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                         <i class="bi bi-shield-lock text-gray-400"></i>
                                     </div>
-                                    <input type="password" name="new_password" id="new_password" 
+                                    <input type="password" name="new_password" id="new_password" placeholder="Nhập mật khẩu mới"
                                         class="w-full pl-10 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 </div>
                                 @error('new_password')
@@ -237,7 +237,7 @@
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                         <i class="bi bi-shield-check text-gray-400"></i>
                                     </div>
-                                    <input type="password" name="new_password_confirmation" id="new_password_confirmation" 
+                                    <input type="password" name="new_password_confirmation" id="new_password_confirmation" placeholder="Nhập lại mật khẩu mới"
                                         class="w-full pl-10 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 </div>
                             </div>

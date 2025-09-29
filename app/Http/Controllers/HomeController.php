@@ -44,8 +44,17 @@ class HomeController extends Controller
         ->latest()
         ->take(4)
         ->get();
-        
-        return view('home', compact('games', 'recentAccounts', 'services', 'accountCategories'));
+
+        // Lấy tất cả services để hiển thị trong grid
+        $allServices = \App\Models\GameService::with(['game', 'packages' => function($query) {
+            $query->where('status', 'active')->orderBy('display_order');
+        }])
+        ->where('status', 'active')
+        ->orderBy('is_featured', 'desc')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        return view('home', compact('games', 'recentAccounts', 'services', 'accountCategories', 'allServices'));
     }
     
     /**

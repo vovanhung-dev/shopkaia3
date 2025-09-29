@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="ShopBuffsao - Web mua bán tài khoản game uy tín, chất lượng cao">
+    <meta name="description" content="Shopkaia3- Web mua bán tài khoản game uy tín, chất lượng cao">
     <meta name="keywords" content="mua tài khoản game, bán tài khoản, game online, nạp game, dịch vụ game">
 
-    <title>{{ config('app.name', 'ShopBuffsao') }} - @yield('title', 'Trang chủ')</title>
+    <title>{{ config('app.name', 'Shopkaia3') }} - @yield('title', 'Trang chủ')</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
@@ -32,7 +32,8 @@
     <style>
         /* Custom styles */
         .gradient-bg {
-            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #6366f1 100%);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         .floating-social {
             position: fixed;
@@ -66,20 +67,6 @@
         .nav-link {
             position: relative;
             transition: all 0.3s ease;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: white;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
         }
         .dropdown-menu {
             border-radius: 0.5rem;
@@ -128,77 +115,35 @@
         
         /* Logo Style */
         .logo-text {
-            font-size: 1.75rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            position: relative;
-            display: inline-block;
-            color: #fff;
-            background: linear-gradient(90deg, #ff00de, #00ffff, #ffff00, #00ff00, #ff00de);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: rainbow 5s linear infinite;
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
         }
-        
-        @keyframes rainbow {
-            0% {
-                background-position: 0% center;
-            }
-            100% {
-                background-position: 200% center;
-            }
+
+        .logo-text:hover {
+            transform: scale(1.05);
+            text-shadow: 0 4px 8px rgba(0,0,0,0.4);
         }
-        
-        /* Sparkles effect */
-        .sparkle-container {
-            position: relative;
-            display: inline-block;
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+            transition: all 0.3s ease;
         }
-        
-        .sparkle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: white;
-            box-shadow: 0 0 10px 2px white;
-            opacity: 0;
-        }
-        
-        .sparkle:nth-child(1) {
-            top: -5px;
-            left: 20%;
-            animation: sparkle 3s ease-in-out 0.3s infinite;
-        }
-        
-        .sparkle:nth-child(2) {
-            top: 10px;
-            left: 65%;
-            animation: sparkle 3.5s ease-in-out 0.9s infinite;
-        }
-        
-        .sparkle:nth-child(3) {
-            top: 25px;
-            left: 10%;
-            animation: sparkle 3.2s ease-in-out 1.5s infinite;
-        }
-        
-        .sparkle:nth-child(4) {
-            top: 0px;
-            left: 90%;
-            animation: sparkle 2.8s ease-in-out 0.7s infinite;
-        }
-        
-        @keyframes sparkle {
-            0%, 100% {
-                opacity: 0;
-                transform: scale(0);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.5);
-            }
+
+        .logo-icon:hover {
+            transform: rotate(10deg) scale(1.1);
+            box-shadow: 0 6px 16px rgba(251, 191, 36, 0.4);
         }
         
         /* Hiệu ứng sao băng */
@@ -516,46 +461,54 @@
     <div class="min-h-screen flex flex-col">
         <!-- Header/Navbar -->
         <header class="sticky top-0 z-50">
-            <nav class="gradient-bg text-white shadow-md">
+            <nav class="gradient-bg text-white shadow-lg backdrop-blur-sm">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex justify-between items-center h-16">
+                    <div class="flex justify-between items-center h-16 md:h-18">
                         <!-- Logo -->
                         <div class="flex items-center">
-                            <a href="{{ route('home') }}" class="flex items-center space-x-2">
-                                <!-- Logo tùy chỉnh với sparkles -->
-                                <div class="sparkle-container">
-                                    <span class="logo-text">ShopBuffsao</span>
+                            <a href="{{ route('home') }}" class="flex items-center hover:opacity-90 transition-opacity">
+                                <div class="logo-icon">
+                                    <i class="bi bi-controller text-white text-xl"></i>
                                 </div>
+                                <span class="logo-text">Shopkaia3</span>
                             </a>
                         </div>
                         
                         <!-- Desktop Navigation -->
-                        <div class="hidden md:flex md:items-center md:space-x-6">
-                            <a href="{{ route('home') }}" class="nav-link px-2 py-2 text-white hover:text-gray-100 font-medium {{ request()->routeIs('home') ? 'active' : '' }}">Trang chủ</a>
-                            <a href="{{ route('accounts.index') }}" class="nav-link px-2 py-2 text-white hover:text-gray-100 font-medium {{ request()->routeIs('accounts.*') ? 'active' : '' }}">Tài khoản</a>
-                            <a href="{{ route('services.index') }}" class="nav-link px-2 py-2 text-white hover:text-gray-100 font-medium {{ request()->routeIs('services.*') ? 'active' : '' }}">Dịch vụ</a>
+                        <div class="hidden md:flex md:items-center md:space-x-1">
+                            <a href="{{ route('home') }}" class="nav-link px-4 py-2 text-white hover:bg-white/10 rounded-lg font-medium transition-all {{ request()->routeIs('home') ? 'bg-white/20' : '' }}">Trang chủ</a>
+                            <a href="{{ route('accounts.index') }}" class="nav-link px-4 py-2 text-white hover:bg-white/10 rounded-lg font-medium transition-all {{ request()->routeIs('accounts.*') ? 'bg-white/20' : '' }}">Tài khoản</a>
+                            <a href="{{ route('services.index') }}" class="nav-link px-4 py-2 text-white hover:bg-white/10 rounded-lg font-medium transition-all {{ request()->routeIs('services.*') ? 'bg-white/20' : '' }}">Dịch vụ</a>
                             @if(Auth::check() && Auth::user()->isAdmin())
-                            <a href="{{ route('topup.index') }}" class="nav-link px-2 py-2 text-white hover:text-gray-100 font-medium {{ request()->routeIs('topup.*') ? 'active' : '' }}">Nạp hộ</a>
+                            <a href="{{ route('topup.index') }}" class="nav-link px-4 py-2 text-white hover:bg-white/10 rounded-lg font-medium transition-all {{ request()->routeIs('topup.*') ? 'bg-white/20' : '' }}">Nạp hộ</a>
                             @endif
-                            <a href="{{ route('wallet.deposit') }}" class="nav-link px-2 py-2 text-white hover:text-gray-100 font-medium {{ request()->routeIs('wallet.deposit') ? 'active' : '' }}">Nạp tiền</a>
                         </div>
                         
                         <!-- User Menu (Desktop) -->
-                        <div class="hidden md:flex items-center space-x-4">
+                        <div class="hidden md:flex items-center space-x-3">
+                            <!-- Nạp tiền button -->
+                            <a href="{{ route('wallet.deposit') }}" class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                <i class="bi bi-plus-circle"></i>
+                                <span>Nạp tiền</span>
+                            </a>
+
                             @guest
-                                <a href="{{ route('login') }}" class="text-white hover:text-gray-200 font-medium">Đăng nhập</a>
-                                <a href="{{ route('register') }}" class="bg-white text-indigo-600 hover:bg-gray-100 px-4 py-2 rounded-lg font-medium transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-md">Đăng ký</a>
+                                <a href="{{ route('login') }}" class="text-white/90 hover:text-white font-medium px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Đăng nhập</a>
+                                <a href="{{ route('register') }}" class="bg-white text-blue-600 hover:bg-gray-50 px-4 py-2 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Đăng ký</a>
                             @else
                                 <div class="relative" id="userDropdown">
                                     <div class="flex items-center space-x-3 cursor-pointer">
                                         <!-- Wallet balance -->
-                                        <a href="{{ route('wallet.index') }}" class="flex items-center px-3 py-1.5 bg-indigo-700 rounded-lg hover:bg-indigo-800 transition">
-                                            <i class="bi bi-wallet2 mr-2"></i>
-                                            <span>{{ Auth::user()->wallet ? number_format(Auth::user()->wallet->balance, 0, ',', '.') : 0 }}đ</span>
+                                        <a href="{{ route('wallet.index') }}" class="flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/20">
+                                            <i class="bi bi-wallet2 mr-2 text-yellow-300"></i>
+                                            <span class="font-semibold">{{ Auth::user()->wallet ? number_format(Auth::user()->wallet->balance, 0, ',', '.') : 0 }}đ</span>
                                         </a>
-                                        
-                                        <div class="flex items-center space-x-1">
-                                            <span class="text-sm">{{ Auth::user()->name }}</span>
+
+                                        <div class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
+                                            <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                                                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                                            </div>
+                                            <span class="text-sm font-medium">{{ Auth::user()->name }}</span>
                                             <i class="bi bi-chevron-down text-xs"></i>
                                         </div>
                                     </div>
@@ -757,12 +710,12 @@
         <footer class="bg-gray-900 text-white pt-12 pb-6">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div data-aos="fade-up" data-aos-delay="100">
+                    <div>
                         <h4 class="text-lg font-semibold mb-4 flex items-center">
                             <i class="bi bi-info-circle mr-2"></i>Về chúng tôi
                         </h4>
                         <p class="text-gray-400 mb-4">
-                            ShopBuffsao là nơi cung cấp tài khoản game chất lượng, uy tín, với nhiều ưu đãi hấp dẫn.
+                            Shopkaia3 là nơi cung cấp tài khoản game chất lượng, uy tín, với nhiều ưu đãi hấp dẫn.
                         </p>
                         <div class="flex space-x-4">
                             <a href="https://www.facebook.com/people/Shopbuffsao/61574594802771/" target="_blank" class="text-gray-400 hover:text-white transition">
@@ -774,7 +727,7 @@
                         </div>
                     </div>
                     
-                    <div data-aos="fade-up" data-aos-delay="200">
+                    <div>
                         <h4 class="text-lg font-semibold mb-4 flex items-center">
                             <i class="bi bi-link-45deg mr-2"></i>Liên kết nhanh
                         </h4>
@@ -787,7 +740,7 @@
                         </ul>
                     </div>
                     
-                    <div data-aos="fade-up" data-aos-delay="300">
+                    <div>
                         <h4 class="text-lg font-semibold mb-4 flex items-center">
                             <i class="bi bi-telephone mr-2"></i>Liên hệ
                         </h4>
@@ -802,7 +755,7 @@
                             </li>
                             <li class="flex items-center">
                                 <i class="bi bi-envelope mr-3 text-indigo-400"></i>
-                                <a href="mailto:shopbuffsao@gmail.com" class="hover:text-white transition">shopbuffsao@gmail.com</a>
+                                <a href="mailto:Shopkaia3@gmail.com" class="hover:text-white transition">Shopkaia3@gmail.com</a>
                             </li>
                         </ul>
                     </div>
@@ -817,13 +770,13 @@
     
     <!-- Floating Social Buttons -->
     <div class="floating-social">
-        <a href="https://www.facebook.com/people/Shopbuffsao/61574594802771/" target="_blank" class="facebook-btn" data-aos="fade-left" data-aos-delay="100">
+        <a href="https://www.facebook.com/people/Shopbuffsao/61574594802771/" target="_blank" class="facebook-btn">
             <i class="bi bi-facebook text-xl"></i>
         </a>
-        <a href="https://zalo.me/0876085633" target="_blank" class="zalo-btn" data-aos="fade-left" data-aos-delay="200">
+        <a href="https://zalo.me/0876085633" target="_blank" class="zalo-btn">
             <span class="font-bold text-sm">Zalo</span>
         </a>
-        <button id="scrollToTop" class="bg-gray-800 text-white hover:bg-gray-700 transition" data-aos="fade-left" data-aos-delay="300">
+        <button id="scrollToTop" class="bg-gray-800 text-white hover:bg-gray-700 transition">
             <i class="bi bi-arrow-up"></i>
         </button>
     </div>
