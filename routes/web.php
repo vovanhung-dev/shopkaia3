@@ -131,6 +131,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::post('/services/{slug}/order', [GameServiceController::class, 'order'])->name('services.order');
+    Route::get('/services/{slug}/package/{package}', [GameServiceController::class, 'showOrderForm'])->name('services.show_order_form');
     Route::post('/services/{slug}/package/{package}', [GameServiceController::class, 'orderPackage'])->name('services.order_package');
     Route::get('/my-service-orders', [GameServiceController::class, 'myOrders'])->name('services.my_orders');
     Route::get('/services/my-orders/{orderNumber}', [GameServiceController::class, 'viewOrder'])->name('services.view_order');

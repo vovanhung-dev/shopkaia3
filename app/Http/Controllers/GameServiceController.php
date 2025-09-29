@@ -93,6 +93,37 @@ class GameServiceController extends Controller
     }
 
     /**
+     * Hiển thị form đặt hàng gói dịch vụ
+     */
+    public function showOrderForm($slug, $packageId)
+    {
+        try {
+            $query = GameService::where('slug', $slug);
+
+            // Thêm điều kiện status khi đã tồn tại cột
+            if (Schema::hasColumn('game_services', 'status')) {
+                $query->where('status', 'active');
+            }
+
+            $service = $query->firstOrFail();
+
+            $packageQuery = ServicePackage::where('id', $packageId)->where('game_service_id', $service->id);
+
+            // Thêm điều kiện status cho packages khi đã tồn tại cột
+            if (Schema::hasColumn('game_service_packages', 'status')) {
+                $packageQuery->where('status', 'active');
+            }
+
+            $package = $packageQuery->firstOrFail();
+
+            return view('services.order_form', compact('service', 'package'));
+        } catch (\Exception $e) {
+            Log::error('Lỗi trong GameServiceController@showOrderForm: ' . $e->getMessage());
+            return redirect()->route('services.index')->with('error', 'Không tìm thấy dịch vụ hoặc gói dịch vụ.');
+        }
+    }
+
+    /**
      * Xử lý đặt dịch vụ
      */
     public function order(Request $request, $slug)
@@ -120,7 +151,6 @@ class GameServiceController extends Controller
             }
             
             if ($service->login_type === 'game_id' || $service->login_type === 'both') {
-                $validationRules['game_id'] = 'required|string|max:100';
                 $validationRules['game_character_name'] = 'nullable|string|max:100';
             }
             
@@ -166,10 +196,7 @@ class GameServiceController extends Controller
                 $orderData['game_password'] = $validated['game_password'];
             }
             
-            // Thêm game_id nếu được yêu cầu
-            if ($service->login_type === 'game_id' || $service->login_type === 'both') {
-                $orderData['game_id'] = $validated['game_id'];
-            }
+            // Game ID đã bị loại bỏ khỏi form
             
             // Tạo đơn hàng
             $order = ServiceOrder::create($orderData);

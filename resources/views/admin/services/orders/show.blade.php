@@ -131,10 +131,6 @@
                     </div>
                     <div class="p-4 bg-blue-50 border-b border-blue-100">
                         <dl class="divide-y divide-blue-100">
-                            <div class="py-3 sm:grid sm:grid-cols-3 sm:gap-4">
-                                <dt class="text-sm font-medium text-gray-500">ID Game</dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0 font-medium">{{ $order->game_id ?? 'Chưa có' }}</dd>
-                            </div>
                             @if($order->game_character_name)
                             <div class="py-3 sm:grid sm:grid-cols-3 sm:gap-4">
                                 <dt class="text-sm font-medium text-gray-500">Tên nhân vật</dt>

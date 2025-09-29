@@ -85,14 +85,6 @@
                         
                         @if($service->login_type === 'game_id' || $service->login_type === 'both')
                         <div class="mb-6">
-                            <label for="game_id" class="block text-sm font-medium text-gray-700 mb-1">ID Game</label>
-                            <input type="text" id="game_id" name="game_id" value="{{ old('game_id') }}" placeholder="Nhập ID game của bạn" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('game_id') border-red-500 @enderror">
-                            @error('game_id')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div class="mb-6">
                             <label for="game_character_name" class="block text-sm font-medium text-gray-700 mb-1">Tên nhân vật</label>
                             <input type="text" id="game_character_name" name="game_character_name" value="{{ old('game_character_name') }}" placeholder="Nhập tên nhân vật" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('game_character_name') border-red-500 @enderror">
                             @error('game_character_name')
