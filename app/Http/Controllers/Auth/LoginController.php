@@ -28,8 +28,14 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|string',
-            'password' => 'required',
+            'email' => 'required|string|email:rfc|max:255',
+            'password' => 'required|string|min:1',
+        ], [
+            'email.required' => 'Vui lòng nhập email.',
+            'email.email' => 'Email không đúng định dạng.',
+            'email.max' => 'Email không được vượt quá 255 ký tự.',
+            'password.required' => 'Vui lòng nhập mật khẩu.',
+            'password.min' => 'Mật khẩu không được để trống.',
         ]);
 
         if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {

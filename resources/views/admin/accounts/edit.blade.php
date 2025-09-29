@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-semibold text-gray-900">Chỉnh sửa tài khoản game</h1>
             <a href="{{ route('admin.accounts.index') }}" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700">
@@ -57,6 +57,7 @@
                         <div>
                             <label for="title" class="block text-sm font-medium text-gray-700">Tiêu đề</label>
                             <input type="text" name="title" id="title" value="{{ old('title') ?? $account->title }}" required
+                                   placeholder="Ví dụ: Tài khoản Free Fire VIP rank Kim Cương"
                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                             @error('title')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -67,6 +68,7 @@
                         <div>
                             <label for="username" class="block text-sm font-medium text-gray-700">Tên đăng nhập</label>
                             <input type="text" name="username" id="username" value="{{ old('username') ?? $account->username }}" required
+                                   placeholder="Nhập tên đăng nhập..."
                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                             @error('username')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -77,6 +79,7 @@
                         <div>
                             <label for="password" class="block text-sm font-medium text-gray-700">Mật khẩu</label>
                             <input type="text" name="password" id="password" value="{{ old('password') ?? $account->password }}" required
+                                   placeholder="Nhập mật khẩu..."
                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                             @error('password')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -87,6 +90,7 @@
                         <div>
                             <label for="price" class="block text-sm font-medium text-gray-700">Giá (đ)</label>
                             <input type="number" name="price" id="price" value="{{ old('price') ?? $account->price }}" required min="0"
+                                   placeholder="Ví dụ: 500000"
                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                             @error('price')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -97,6 +101,7 @@
                         <div>
                             <label for="original_price" class="block text-sm font-medium text-gray-700">Giá gốc (đ)</label>
                             <input type="number" name="original_price" id="original_price" value="{{ old('original_price') ?? $account->original_price }}" min="0"
+                                   placeholder="Ví dụ: 800000"
                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                             <p class="mt-1 text-xs text-gray-500">Để trống nếu không có khuyến mãi</p>
                             @error('original_price')
@@ -108,6 +113,7 @@
                         <div>
                             <label for="description" class="block text-sm font-medium text-gray-700">Mô tả</label>
                             <textarea name="description" id="description" rows="3"
+                                      placeholder="Mô tả chi tiết về tài khoản game, trang bị, nhân vật..."
                                       class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">{{ old('description') ?? $account->description }}</textarea>
                             @error('description')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>

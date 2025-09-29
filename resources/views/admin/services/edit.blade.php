@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-semibold text-gray-900">Chỉnh sửa dịch vụ: {{ $service->name }}</h1>
             <a href="{{ route('admin.services.index') }}" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 flex items-center">
@@ -63,7 +63,8 @@
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
                                 Tên dịch vụ <span class="text-red-600">*</span>
                             </label>
-                            <input type="text" id="name" name="name" value="{{ old('name', $service->name) }}" 
+                            <input type="text" id="name" name="name" value="{{ old('name', $service->name) }}"
+                                placeholder="Ví dụ: Câu cá Free Fire, Boosting rank Liên Quân"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
                             @error('name')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -126,7 +127,8 @@
                             <label for="short_description" class="block text-sm font-medium text-gray-700 mb-1">
                                 Mô tả ngắn
                             </label>
-                            <textarea id="short_description" name="short_description" rows="2" 
+                            <textarea id="short_description" name="short_description" rows="2"
+                                placeholder="Mô tả ngắn gọn về dịch vụ..."
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">{{ old('short_description', $service->short_description) }}</textarea>
                             <p class="text-xs text-gray-500 mt-1">Mô tả ngắn gọn sẽ hiển thị ở trang danh sách dịch vụ</p>
                             @error('short_description')

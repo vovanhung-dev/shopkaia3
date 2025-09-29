@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-semibold text-gray-900">Lịch sử giao dịch ví: {{ $user->name }}</h1>
             <a href="{{ route('admin.users.show', $user->id) }}" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700">

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-semibold text-gray-900">Chỉnh sửa danh mục nạp hộ</h1>
             <a href="{{ route('admin.topup_categories.index') }}" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 flex items-center">
@@ -40,7 +40,8 @@
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
                                 Tên danh mục <span class="text-red-600">*</span>
                             </label>
-                            <input type="text" id="name" name="name" value="{{ old('name', $category->name) }}" 
+                            <input type="text" id="name" name="name" value="{{ old('name', $category->name) }}"
+                                placeholder="Ví dụ: Nạp thẻ game, Nạp xu"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
                             @error('name')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -52,6 +53,7 @@
                                 Slug
                             </label>
                             <input type="text" id="slug" name="slug" value="{{ old('slug', $category->slug) }}"
+                                placeholder="Ví dụ: nap-the-game"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             <p class="text-xs text-gray-500 mt-1">Tự động tạo từ tên danh mục</p>
                             @error('slug')
@@ -64,6 +66,7 @@
                                 Thứ tự hiển thị
                             </label>
                             <input type="number" id="display_order" name="display_order" value="{{ old('display_order', $category->display_order) }}" min="0"
+                                placeholder="Ví dụ: 1"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             <p class="text-xs text-gray-500 mt-1">Số nhỏ hơn sẽ hiển thị trước</p>
                             @error('display_order')
@@ -108,6 +111,7 @@
                                 Mô tả ngắn
                             </label>
                             <textarea id="short_description" name="short_description" rows="2"
+                                placeholder="Mô tả ngắn gọn về danh mục..."
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">{{ old('short_description', $category->short_description) }}</textarea>
                             <p class="text-xs text-gray-500 mt-1">Mô tả ngắn gọn sẽ hiển thị ở trang danh sách</p>
                             @error('short_description')

@@ -18,150 +18,174 @@
     
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
+
+    <style>
+        /* Clean Admin Sidebar */
+        .admin-sidebar {
+            background: #ffffff;
+            border-right: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-menu-item {
+            transition: all 0.15s ease;
+            border-radius: 8px;
+            margin: 2px 12px;
+        }
+
+        .sidebar-menu-item:hover {
+            background-color: #f3f4f6;
+        }
+
+        .sidebar-menu-item.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .sidebar-submenu {
+            background-color: #f9fafb;
+            border-radius: 6px;
+            margin: 4px 12px;
+            border-left: 3px solid #e5e7eb;
+        }
+
+        .sidebar-submenu-item:hover {
+            background-color: #f3f4f6;
+        }
+
+        .sidebar-submenu-item.active {
+            background-color: #dbeafe;
+            color: #1d4ed8;
+            font-weight: 500;
+        }
+
+        .user-profile {
+            background-color: #f8fafc;
+            border-top: 1px solid #e5e7eb;
+        }
+    </style>
+
     @stack('styles')
 </head>
-<body class="bg-gray-100 min-h-screen">
-    <div class="flex h-screen bg-gray-100">
+<body class="bg-gray-50 min-h-screen">
+    <div class="flex h-screen bg-gray-50">
         <!-- Sidebar -->
         <div class="hidden md:flex md:flex-shrink-0">
             <div class="flex flex-col w-64">
-                <div class="flex flex-col h-0 flex-1 bg-gray-800">
+                <div class="admin-sidebar flex flex-col h-0 flex-1">
                     <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
                         <!-- Logo -->
-                        <div class="flex items-center flex-shrink-0 px-4 mb-5">
-                            <a href="{{ route('admin.dashboard') }}" class="logo-text">Admin Panel</a>
+                        <div class="flex items-center flex-shrink-0 px-6 py-6 border-b border-gray-200">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="bi bi-speedometer2 text-white text-lg"></i>
+                                </div>
+                                <a href="{{ route('admin.dashboard') }}" class="text-xl font-bold text-gray-800">Admin Panel</a>
+                            </div>
                         </div>
                         
                         <!-- Menu -->
-                        <nav class="mt-5 flex-1 px-2 space-y-1">
-                            <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <svg class="mr-3 h-6 w-6 {{ request()->routeIs('admin.dashboard') ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300' }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                                </svg>
+                        <nav class="mt-4 flex-1 px-3 space-y-1">
+                            <a href="{{ route('admin.dashboard') }}" class="sidebar-menu-item {{ request()->routeIs('admin.dashboard') ? 'active text-white' : 'text-gray-700' }} flex items-center px-3 py-2.5 text-sm font-medium">
+                                <i class="bi bi-house mr-3 text-lg {{ request()->routeIs('admin.dashboard') ? 'text-white' : 'text-gray-500' }}"></i>
                                 Dashboard
                             </a>
                             
-                            <a href="{{ route('admin.games.index') }}" class="{{ request()->routeIs('admin.games.*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <svg class="mr-3 h-6 w-6 {{ request()->routeIs('admin.games.*') ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300' }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                </svg>
+                            <a href="{{ route('admin.games.index') }}" class="sidebar-menu-item {{ request()->routeIs('admin.games.*') ? 'active text-white' : 'text-gray-700' }} flex items-center px-3 py-2.5 text-sm font-medium">
+                                <i class="bi bi-controller mr-3 text-lg {{ request()->routeIs('admin.games.*') ? 'text-white' : 'text-gray-500' }}"></i>
                                 Quản lý game
                             </a>
                             
                             <!-- Dropdown: Quản lý tài khoản -->
                             <div x-data="{ open: {{ request()->routeIs('admin.accounts.*') || request()->routeIs('admin.account_categories.*') ? 'true' : 'false' }} }">
-                                <button @click="open = !open" class="w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                    <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                    </svg>
+                                <button @click="open = !open" class="sidebar-menu-item w-full text-left text-gray-700 flex items-center px-3 py-2.5 text-sm font-medium">
+                                    <i class="bi bi-person-circle mr-3 text-lg text-gray-500"></i>
                                     <span class="flex-1">Quản lý tài khoản</span>
-                                    <svg :class="{'rotate-90': open, 'rotate-0': !open}" class="w-4 h-4 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                    </svg>
+                                    <i :class="{'rotate-90': open}" class="bi bi-chevron-right text-sm transform transition-transform"></i>
                                 </button>
-                                <div x-show="open" class="mt-1 pl-6 space-y-1">
-                                    <a href="{{ route('admin.account_categories.index') }}" class="{{ request()->routeIs('admin.account_categories.*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                        <span class="truncate">Danh mục tài khoản</span>
+                                <div x-show="open" class="sidebar-submenu mt-2 py-2">
+                                    <a href="{{ route('admin.account_categories.index') }}" class="sidebar-submenu-item {{ request()->routeIs('admin.account_categories.*') ? 'active' : 'text-gray-600' }} block px-6 py-2 text-sm">
+                                        Danh mục tài khoản
                                     </a>
-                                    <a href="{{ route('admin.accounts.index') }}" class="{{ request()->routeIs('admin.accounts.*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                        <span class="truncate">Tài khoản</span>
+                                    <a href="{{ route('admin.accounts.index') }}" class="sidebar-submenu-item {{ request()->routeIs('admin.accounts.*') ? 'active' : 'text-gray-600' }} block px-6 py-2 text-sm">
+                                        Tài khoản
                                     </a>
                                 </div>
                             </div>
                             
                             <!-- Dropdown: Quản lý đơn hàng -->
                             <div x-data="{ open: {{ request()->routeIs('admin.orders.*') ? 'true' : 'false' }} }">
-                                <button @click="open = !open" class="w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                    <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                    </svg>
+                                <button @click="open = !open" class="sidebar-menu-item w-full text-left text-gray-700 flex items-center px-3 py-2.5 text-sm font-medium">
+                                    <i class="bi bi-bag mr-3 text-lg text-gray-500"></i>
                                     <span class="flex-1">Quản lý đơn hàng</span>
-                                    <svg :class="{'rotate-90': open, 'rotate-0': !open}" class="w-4 h-4 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                    </svg>
+                                    <i :class="{'rotate-90': open}" class="bi bi-chevron-right text-sm transform transition-transform"></i>
                                 </button>
-                                <div x-show="open" class="mt-1 pl-6 space-y-1">
-                                    <a href="{{ route('admin.orders.index') }}" class="{{ request()->routeIs('admin.orders.*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                        <span class="truncate">Đơn hàng tài khoản</span>
+                                <div x-show="open" class="sidebar-submenu mt-2 py-2">
+                                    <a href="{{ route('admin.orders.index') }}" class="sidebar-submenu-item {{ request()->routeIs('admin.orders.*') ? 'active' : 'text-gray-600' }} block px-6 py-2 text-sm">
+                                        Đơn hàng tài khoản
                                     </a>
                                 </div>
                             </div>
                             
                             <!-- Dropdown: Quản lý dịch vụ -->
                             <div x-data="{ open: {{ request()->routeIs('admin.services.*') || request()->routeIs('admin.topup.*') || request()->routeIs('admin.boosting.*') ? 'true' : 'false' }} }">
-                                <button @click="open = !open" class="w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                    <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
+                                <button @click="open = !open" class="sidebar-menu-item w-full text-left text-gray-700 flex items-center px-3 py-2.5 text-sm font-medium">
+                                    <i class="bi bi-gear mr-3 text-lg text-gray-500"></i>
                                     <span class="flex-1">Quản lý dịch vụ</span>
-                                    <svg :class="{'rotate-90': open, 'rotate-0': !open}" class="w-4 h-4 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                    </svg>
+                                    <i :class="{'rotate-90': open}" class="bi bi-chevron-right text-sm transform transition-transform"></i>
                                 </button>
-                                <div x-show="open" class="mt-1 pl-6 space-y-1">
-                                    <a href="{{ route('admin.services.index') }}" class="{{ request()->routeIs('admin.services.*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                        <span class="truncate">Dịch vụ</span>
+                                <div x-show="open" class="sidebar-submenu mt-2 py-2">
+                                    <a href="{{ route('admin.services.index') }}" class="sidebar-submenu-item {{ request()->routeIs('admin.services.*') ? 'active' : 'text-gray-600' }} block px-6 py-2 text-sm">
+                                        Dịch vụ
                                     </a>
-                                    <a href="{{ route('admin.services.orders.index') }}" class="{{ request()->routeIs('admin.services.orders.*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                        <span class="truncate">Đơn hàng dịch vụ</span>
+                                    <a href="{{ route('admin.services.orders.index') }}" class="sidebar-submenu-item {{ request()->routeIs('admin.services.orders.*') ? 'active' : 'text-gray-600' }} block px-6 py-2 text-sm">
+                                        Đơn hàng dịch vụ
                                     </a>
-                                  
                                 </div>
                             </div>
 
-                              <!-- Dropdown: Quản lý dịch vụ -->
+                              <!-- Dropdown: Quản lý nạp hộ -->
                               <div x-data="{ open: {{ request()->routeIs('admin.topup.*') || request()->routeIs('admin.topup_categories.*') ? 'true' : 'false' }} }">
-                                <button @click="open = !open" class="w-full text-left text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                    <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
+                                <button @click="open = !open" class="sidebar-menu-item w-full text-left text-gray-700 flex items-center px-3 py-2.5 text-sm font-medium">
+                                    <i class="bi bi-credit-card mr-3 text-lg text-gray-500"></i>
                                     <span class="flex-1">Quản lý nạp hộ</span>
-                                    <svg :class="{'rotate-90': open, 'rotate-0': !open}" class="w-4 h-4 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                    </svg>
+                                    <i :class="{'rotate-90': open}" class="bi bi-chevron-right text-sm transform transition-transform"></i>
                                 </button>
-                                <div x-show="open" class="mt-1 pl-6 space-y-1">
-                                    
-                                    <a href="{{ route('admin.topup.index') }}" class="{{ request()->routeIs('admin.topup.*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                        <span class="truncate">Dịch vụ nạp hộ</span>
+                                <div x-show="open" class="sidebar-submenu mt-2 py-2">
+                                    <a href="{{ route('admin.topup.index') }}" class="sidebar-submenu-item {{ request()->routeIs('admin.topup.*') ? 'active' : 'text-gray-600' }} block px-6 py-2 text-sm">
+                                        Dịch vụ nạp hộ
                                     </a>
-                                    <a href="{{ route('admin.topup_categories.index') }}" class="{{ request()->routeIs('admin.topup_categories.*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                        <span class="truncate">Danh mục nạp hộ</span>
+                                    <a href="{{ route('admin.topup_categories.index') }}" class="sidebar-submenu-item {{ request()->routeIs('admin.topup_categories.*') ? 'active' : 'text-gray-600' }} block px-6 py-2 text-sm">
+                                        Danh mục nạp hộ
                                     </a>
-                                    <a href="{{ route('admin.topup_orders.index') }}" class="{{ request()->routeIs('admin.topup_orders.*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                        <span class="truncate">Đơn hàng nạp hộ</span>
+                                    <a href="{{ route('admin.topup_orders.index') }}" class="sidebar-submenu-item {{ request()->routeIs('admin.topup_orders.*') ? 'active' : 'text-gray-600' }} block px-6 py-2 text-sm">
+                                        Đơn hàng nạp hộ
                                     </a>
                                 </div>
                             </div>
                             
-                            <a href="{{ route('admin.users.index') }}" class="{{ request()->routeIs('admin.users.*') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }} group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                <svg class="mr-3 h-6 w-6 {{ request()->routeIs('admin.users.*') ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300' }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                                </svg>
-                                Quản lý người dùng
+                            <a href="{{ route('admin.users.index') }}" class="sidebar-menu-item {{ request()->routeIs('admin.users.*') ? 'active text-white' : 'text-gray-700' }} flex items-center px-3 py-2.5 text-sm font-medium">
+                                <i class="bi bi-people mr-3 text-lg {{ request()->routeIs('admin.users.*') ? 'text-white' : 'text-gray-500' }}"></i>
+                                <span class="font-medium">Quản lý người dùng</span>
                             </a>
                         </nav>
                     </div>
                     
                     <!-- User profile -->
-                    <div class="flex-shrink-0 flex bg-gray-700 p-4">
-                        <div class="flex-shrink-0 w-full group block">
-                            <div class="flex items-center">
-                                <div>
-                                    <div class="h-9 w-9 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 text-sm font-medium uppercase">
-                                        {{ auth()->user()->name[0] }}
-                                    </div>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm font-medium text-white">{{ auth()->user()->name }}</p>
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button type="submit" class="text-xs font-medium text-gray-300 hover:text-white">
-                                            Đăng xuất
-                                        </button>
-                                    </form>
-                                </div>
+                    <div class="user-profile flex-shrink-0 p-4">
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm font-semibold">
+                                {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                            </div>
+                            <div class="ml-3 flex-1">
+                                <p class="text-sm font-medium text-gray-800">{{ auth()->user()->name }}</p>
+                                <form method="POST" action="{{ route('logout') }}" class="mt-1">
+                                    @csrf
+                                    <button type="submit" class="text-xs text-gray-500 hover:text-gray-700 flex items-center">
+                                        <i class="bi bi-box-arrow-right mr-1"></i>
+                                        Đăng xuất
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -235,19 +259,26 @@
         
         <!-- Main Content -->
         <div class="flex flex-col w-0 flex-1 overflow-hidden">
-            <main class="flex-1 relative overflow-y-auto focus:outline-none">
-                @if(session('success'))
-                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 m-4" role="alert">
+            <!-- Flash Messages -->
+            @if(session('success'))
+                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mx-6 mt-4 rounded-r" role="alert">
+                    <div class="flex items-center">
+                        <i class="bi bi-check-circle text-green-500 mr-2"></i>
                         <p>{{ session('success') }}</p>
                     </div>
-                @endif
-                
-                @if(session('error'))
-                    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 m-4" role="alert">
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mx-6 mt-4 rounded-r" role="alert">
+                    <div class="flex items-center">
+                        <i class="bi bi-exclamation-circle text-red-500 mr-2"></i>
                         <p>{{ session('error') }}</p>
                     </div>
-                @endif
-                
+                </div>
+            @endif
+
+            <main class="flex-1 relative overflow-y-auto focus:outline-none">
                 @yield('content')
             </main>
         </div>

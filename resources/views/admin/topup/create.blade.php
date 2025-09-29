@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-semibold text-gray-900">
                 Thêm dịch vụ nạp thuê mới
@@ -42,7 +42,7 @@
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
                                 Tên dịch vụ <span class="text-red-600">*</span>
                             </label>
-                            <input type="text" id="name" name="name" value="{{ old('name') }}" required
+                            <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Nhập tên dịch vụ nạp thuê, ví dụ: Nạp 1000 Kim Cương Free Fire" required
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             <p class="text-xs text-gray-500 mt-1">Tên dịch vụ nạp thuê, ví dụ: Nạp 1000 Kim Cương Free Fire</p>
                         </div>
@@ -81,7 +81,7 @@
                             <label for="short_description" class="block text-sm font-medium text-gray-700 mb-1">
                                 Mô tả ngắn
                             </label>
-                            <textarea id="short_description" name="short_description" rows="2" 
+                            <textarea id="short_description" name="short_description" rows="2" placeholder="Nhập mô tả ngắn gọn về dịch vụ nạp thuê"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">{{ old('short_description') }}</textarea>
                             <p class="text-xs text-gray-500 mt-1">Mô tả ngắn gọn sẽ hiển thị ở trang danh sách dịch vụ</p>
                             @error('short_description')
@@ -102,14 +102,14 @@
                                 <label for="price" class="block text-sm font-medium text-gray-700 mb-1">
                                     Giá (VNĐ) <span class="text-red-600">*</span>
                                 </label>
-                                <input type="number" id="price" name="price" value="{{ old('price') }}" min="0" required
+                                <input type="number" id="price" name="price" value="{{ old('price') }}" placeholder="50000" min="0" required
                                     class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             </div>
                             <div>
                                 <label for="sale_price" class="block text-sm font-medium text-gray-700 mb-1">
                                     Giá khuyến mãi
                                 </label>
-                                <input type="number" id="sale_price" name="sale_price" value="{{ old('sale_price') }}" min="0"
+                                <input type="number" id="sale_price" name="sale_price" value="{{ old('sale_price') }}" placeholder="45000" min="0"
                                     class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                             <label for="estimated_minutes" class="block text-sm font-medium text-gray-700 mb-1">
                                 Thời gian hoàn thành (phút) <span class="text-red-600">*</span>
                             </label>
-                            <input type="number" id="estimated_minutes" name="estimated_minutes" value="{{ old('estimated_minutes') }}" min="1" required
+                            <input type="number" id="estimated_minutes" name="estimated_minutes" value="{{ old('estimated_minutes') }}" placeholder="15" min="1" required
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                             <label for="requirements" class="block text-sm font-medium text-gray-700 mb-1">
                                 Yêu cầu
                             </label>
-                            <textarea id="requirements" name="requirements" rows="3"
+                            <textarea id="requirements" name="requirements" rows="3" placeholder="Nhập các yêu cầu đối với tài khoản game của khách hàng"
                                 class="ckeditor block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">{{ old('requirements') }}</textarea>
                             <p class="text-xs text-gray-500 mt-1">Các yêu cầu đối với tài khoản game của khách hàng</p>
                         </div>
@@ -139,7 +139,7 @@
                             <label for="includes" class="block text-sm font-medium text-gray-700 mb-1">
                                 Bao gồm
                             </label>
-                            <textarea id="includes" name="includes" rows="3"
+                            <textarea id="includes" name="includes" rows="3" placeholder="Nhập những gì khách hàng sẽ nhận được"
                                 class="ckeditor block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">{{ old('includes') }}</textarea>
                             <p class="text-xs text-gray-500 mt-1">Những gì khách hàng sẽ nhận được</p>
                         </div>

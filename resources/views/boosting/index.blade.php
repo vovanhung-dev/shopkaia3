@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
             <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Dịch vụ cày thuê</h1>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">

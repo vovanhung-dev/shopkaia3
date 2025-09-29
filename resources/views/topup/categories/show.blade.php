@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Tiêu đề danh mục -->
         <div class="relative mb-8 rounded-lg overflow-hidden">
             <img src="{{ $category->image ? asset('storage/'.$category->image) : asset('images/default-banner.jpg') }}" alt="{{ $category->name }}" class="w-full h-64 object-cover">

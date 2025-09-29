@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-semibold text-gray-900">Chỉnh sửa trò chơi: {{ $game->name }}</h1>
             <a href="{{ route('admin.games.index') }}" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700">
@@ -22,6 +22,7 @@
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700">Tên trò chơi</label>
                             <input type="text" name="name" id="name" value="{{ old('name', $game->name) }}" required
+                                   placeholder="Ví dụ: Liên Quân Mobile"
                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                             @error('name')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -32,6 +33,7 @@
                         <div>
                             <label for="slug" class="block text-sm font-medium text-gray-700">Slug</label>
                             <input type="text" name="slug" id="slug" value="{{ old('slug', $game->slug) }}" required
+                                   placeholder="lien-quan-mobile"
                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                             <p class="mt-1 text-xs text-gray-500">Slug sẽ được sử dụng trong URL. Ví dụ: "lien-quan-mobile"</p>
                             @error('slug')
@@ -43,6 +45,7 @@
                         <div>
                             <label for="description" class="block text-sm font-medium text-gray-700">Mô tả</label>
                             <textarea name="description" id="description" rows="3"
+                                      placeholder="Mô tả chi tiết về trò chơi..."
                                       class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">{{ old('description', $game->description) }}</textarea>
                             @error('description')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>

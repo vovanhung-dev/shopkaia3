@@ -30,9 +30,24 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'name' => 'required|string|min:2|max:255|regex:/^[a-zA-ZÀ-ỹ\s]+$/',
+            'email' => 'required|string|email:rfc,dns|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+            'terms' => 'required|accepted',
+        ], [
+            'name.required' => 'Vui lòng nhập họ tên.',
+            'name.min' => 'Họ tên phải có ít nhất 2 ký tự.',
+            'name.max' => 'Họ tên không được vượt quá 255 ký tự.',
+            'name.regex' => 'Họ tên chỉ được chứa chữ cái và khoảng trắng.',
+            'email.required' => 'Vui lòng nhập email.',
+            'email.email' => 'Email không đúng định dạng.',
+            'email.unique' => 'Email này đã được sử dụng.',
+            'password.required' => 'Vui lòng nhập mật khẩu.',
+            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
+            'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
+            'password.regex' => 'Mật khẩu phải chứa ít nhất 1 chữ thường, 1 chữ hoa và 1 số.',
+            'terms.required' => 'Vui lòng đồng ý với điều khoản sử dụng.',
+            'terms.accepted' => 'Bạn phải đồng ý với điều khoản sử dụng.',
         ]);
 
         // Lấy vai trò người dùng

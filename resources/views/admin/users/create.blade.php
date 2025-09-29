@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-semibold text-gray-900">Thêm người dùng mới</h1>
             <a href="{{ route('admin.users.index') }}" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700">
@@ -20,7 +20,7 @@
                         <!-- Họ tên -->
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700">Họ tên</label>
-                            <input type="text" name="name" id="name" value="{{ old('name') }}" required
+                            <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Nhập họ tên đầy đủ, ví dụ: Nguyễn Văn A" required
                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                             @error('name')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -30,7 +30,7 @@
                         <!-- Email -->
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                            <input type="email" name="email" id="email" value="{{ old('email') }}" required
+                            <input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Nhập địa chỉ email, ví dụ: user@example.com" required
                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                             @error('email')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -40,7 +40,7 @@
                         <!-- Mật khẩu -->
                         <div>
                             <label for="password" class="block text-sm font-medium text-gray-700">Mật khẩu</label>
-                            <input type="password" name="password" id="password" required
+                            <input type="password" name="password" id="password" placeholder="Nhập mật khẩu (tối thiểu 8 ký tự)" required
                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                             @error('password')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -50,7 +50,7 @@
                         <!-- Xác nhận mật khẩu -->
                         <div>
                             <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Xác nhận mật khẩu</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" required
+                            <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Nhập lại mật khẩu để xác nhận" required
                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                         </div>
 

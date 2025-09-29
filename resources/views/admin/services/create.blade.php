@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-semibold text-gray-900">Thêm dịch vụ mới</h1>
             <a href="{{ route('admin.services.index') }}" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 flex items-center">
@@ -62,7 +62,7 @@
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
                                 Tên dịch vụ <span class="text-red-600">*</span>
                             </label>
-                            <input type="text" id="name" name="name" value="{{ old('name') }}" 
+                            <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Nhập tên dịch vụ, ví dụ: Câu cá, Bán tài khoản, Cày thuê"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
                             @error('name')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -119,7 +119,7 @@
                             <label for="short_description" class="block text-sm font-medium text-gray-700 mb-1">
                                 Mô tả ngắn
                             </label>
-                            <textarea id="short_description" name="short_description" rows="2" 
+                            <textarea id="short_description" name="short_description" rows="2" placeholder="Nhập mô tả ngắn gọn về dịch vụ"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">{{ old('short_description') }}</textarea>
                             <p class="text-xs text-gray-500 mt-1">Mô tả ngắn gọn sẽ hiển thị ở trang danh sách dịch vụ</p>
                             @error('short_description')
@@ -131,7 +131,7 @@
                             <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
                                 Mô tả dịch vụ
                             </label>
-                            <textarea id="description" name="description" rows="5" 
+                            <textarea id="description" name="description" rows="5" placeholder="Nhập mô tả chi tiết về dịch vụ"
                                 class="ckeditor block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">{{ old('description') }}</textarea>
                             @error('description')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-semibold text-gray-900">Thêm danh mục nạp hộ</h1>
             <a href="{{ route('admin.topup_categories.index') }}" class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700">
@@ -43,7 +43,7 @@
                                 Tên danh mục <span class="text-red-500">*</span>
                             </label>
                             <div class="mt-1">
-                                <input type="text" id="name" name="name" value="{{ old('name') }}" 
+                                <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Nhập tên danh mục, ví dụ: Kim Cương, Vàng, Xu"
                                     class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('name') border-red-500 @enderror" required>
                             </div>
                             @error('name')
@@ -56,7 +56,7 @@
                                 Slug
                             </label>
                             <div class="mt-1">
-                                <input type="text" id="slug" name="slug" value="{{ old('slug') }}"
+                                <input type="text" id="slug" name="slug" value="{{ old('slug') }}" placeholder="slug-tu-dong-tao-tu-ten-danh-muc"
                                     class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('slug') border-red-500 @enderror">
                             </div>
                             @error('slug')
@@ -69,7 +69,7 @@
                                 Thứ tự hiển thị
                             </label>
                             <div class="mt-1">
-                                <input type="number" id="display_order" name="display_order" value="{{ old('display_order', 0) }}" min="0"
+                                <input type="number" id="display_order" name="display_order" value="{{ old('display_order', 0) }}" placeholder="0" min="0"
                                     class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('display_order') border-red-500 @enderror">
                                 <p class="mt-1 text-xs text-gray-500">Số nhỏ hơn sẽ hiển thị trước</p>
                             </div>
@@ -108,7 +108,7 @@
                                 Mô tả ngắn
                             </label>
                             <div class="mt-1">
-                                <textarea id="short_description" name="short_description" rows="2"
+                                <textarea id="short_description" name="short_description" rows="2" placeholder="Nhập mô tả ngắn gọn về danh mục này"
                                     class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('short_description') border-red-500 @enderror">{{ old('short_description') }}</textarea>
                                 <p class="mt-1 text-xs text-gray-500">Mô tả ngắn gọn sẽ hiển thị ở trang danh sách</p>
                             </div>
@@ -122,7 +122,7 @@
                                 Mô tả danh mục
                             </label>
                             <div class="mt-1">
-                                <textarea id="description" name="description" rows="4"
+                                <textarea id="description" name="description" rows="4" placeholder="Nhập mô tả chi tiết về danh mục nạp hộ"
                                     class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md @error('description') border-red-500 @enderror">{{ old('description') }}</textarea>
                             </div>
                             @error('description')

@@ -43,7 +43,7 @@
             <!-- Email -->
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700">
-                    Tên đăng nhập
+                    Email
                 </label>
                 <div class="mt-1 relative rounded-md shadow-sm">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -51,7 +51,7 @@
                             <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <input id="email" name="email" type="text" value="{{ old('email') }}" placeholder="Nhập tên đăng nhập" required autofocus
+                    <input id="email" name="email" type="email" value="{{ old('email') }}" placeholder="Nhập email của bạn" required autofocus
                         class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base">
                 </div>
             </div>

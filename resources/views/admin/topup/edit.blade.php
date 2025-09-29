@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
             <h1 class="text-2xl font-semibold text-gray-900">
                 Chỉnh sửa dịch vụ nạp thuê
@@ -44,6 +44,7 @@
                                 Tên dịch vụ <span class="text-red-600">*</span>
                             </label>
                             <input type="text" id="name" name="name" value="{{ old('name', $service->name) }}" required
+                                placeholder="Ví dụ: Nạp 1000 Kim Cương Free Fire"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             <p class="text-xs text-gray-500 mt-1">Tên dịch vụ nạp thuê, ví dụ: Nạp 1000 Kim Cương Free Fire</p>
                         </div>
@@ -82,7 +83,8 @@
                             <label for="short_description" class="block text-sm font-medium text-gray-700 mb-1">
                                 Mô tả ngắn
                             </label>
-                            <textarea id="short_description" name="short_description" rows="2" 
+                            <textarea id="short_description" name="short_description" rows="2"
+                                placeholder="Mô tả ngắn gọn về dịch vụ nạp hộ..."
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">{{ old('short_description', $service->short_description) }}</textarea>
                             <p class="text-xs text-gray-500 mt-1">Mô tả ngắn gọn sẽ hiển thị ở trang danh sách dịch vụ</p>
                             @error('short_description')
@@ -104,6 +106,7 @@
                                     Giá (VNĐ) <span class="text-red-600">*</span>
                                 </label>
                                 <input type="number" id="price" name="price" value="{{ old('price', $service->price) }}" min="0" required
+                                    placeholder="Ví dụ: 50000"
                                     class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             </div>
                             <div>
@@ -111,6 +114,7 @@
                                     Giá khuyến mãi
                                 </label>
                                 <input type="number" id="sale_price" name="sale_price" value="{{ old('sale_price', $service->sale_price) }}" min="0"
+                                    placeholder="Ví dụ: 45000"
                                     class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             </div>
                         </div>
@@ -120,6 +124,7 @@
                                 Thời gian hoàn thành (phút) <span class="text-red-600">*</span>
                             </label>
                             <input type="number" id="estimated_minutes" name="estimated_minutes" value="{{ old('estimated_minutes', $service->estimated_minutes) }}" min="1" required
+                                placeholder="Ví dụ: 15"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
                     </div>
