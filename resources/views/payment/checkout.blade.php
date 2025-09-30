@@ -328,6 +328,38 @@
                                 <span class="text-red-600">{{ number_format($order->amount, 0, ',', '.') }}đ</span>
                             </div>
                         </div>
+                        @elseif(isset($order) && strpos($order->order_number, 'SRV-') === 0)
+                        <!-- Hiển thị thông tin đơn hàng dịch vụ -->
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-16 bg-blue-100 rounded-md flex items-center justify-center">
+                                <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                                    {{ strtoupper(substr($order->user->name, 0, 1)) }}
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="font-medium text-gray-900">{{ $order->service->name ?? 'Dịch vụ game' }}</h3>
+                                <p class="text-sm text-gray-500">{{ $order->package->name ?? 'Gói dịch vụ' }}</p>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-gray-200 pt-4 mt-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-600">Giá dịch vụ</span>
+                                <span class="font-medium text-gray-900">{{ number_format($order->original_amount ?? $order->amount, 0, ',', '.') }}đ</span>
+                            </div>
+
+                            @if(isset($order->discount) && $order->discount > 0)
+                                <div class="flex justify-between mb-2 text-green-600">
+                                    <span>Giảm giá</span>
+                                    <span>-{{ number_format($order->discount, 0, ',', '.') }}đ</span>
+                                </div>
+                            @endif
+
+                            <div class="flex justify-between font-bold text-lg pt-4 border-t border-gray-200 mt-4">
+                                <span>Tổng cộng</span>
+                                <span class="text-red-600">{{ number_format($order->amount, 0, ',', '.') }}đ</span>
+                            </div>
+                        </div>
                         @else
                         <!-- Hiển thị thông tin đơn hàng tài khoản thường -->
                         <div class="flex items-center mb-4">

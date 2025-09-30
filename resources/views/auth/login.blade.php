@@ -58,14 +58,9 @@
 
             <!-- Password -->
             <div>
-                <div class="flex items-center justify-between">
-                    <label for="password" class="block text-sm font-medium text-gray-700">
-                        Mật khẩu
-                    </label>
-                    <a href="#" class="text-xs font-medium text-indigo-600 hover:text-indigo-500">
-                        Quên mật khẩu?
-                    </a>
-                </div>
+                <label for="password" class="block text-sm font-medium text-gray-700">
+                    Mật khẩu
+                </label>
                 <div class="mt-1 relative rounded-md shadow-sm">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">

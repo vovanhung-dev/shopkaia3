@@ -466,9 +466,9 @@
                     <div class="flex justify-between items-center h-16 md:h-18">
                         <!-- Logo -->
                         <div class="flex items-center">
-                            <a href="{{ route('home') }}" class="flex items-center hover:opacity-90 transition-opacity">
-                                <div class="logo-icon">
-                                    <i class="bi bi-controller text-white text-xl"></i>
+                            <a href="{{ route('home') }}" class="flex items-center space-x-3 hover:opacity-90 transition-all duration-300 group">
+                                <div class="bg-white p-1 rounded shadow-md group-hover:shadow-lg transition-all duration-300">
+                                    <img src="{{ asset('logo.png') }}" alt="Shopkaia3 Logo" class="h-10 w-auto group-hover:scale-105 transition-transform duration-300">
                                 </div>
                                 <span class="logo-text">Shopkaia3</span>
                             </a>
