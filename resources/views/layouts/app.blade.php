@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kumar+One&display=swap" rel="stylesheet">
     
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -32,8 +33,8 @@
     <style>
         /* Custom styles */
         .gradient-bg {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #6366f1 100%);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
         }
         .floating-social {
             position: fixed;
@@ -44,25 +45,77 @@
             flex-direction: column;
             gap: 10px;
         }
-        .floating-social a {
+        .floating-social a,
+        .floating-social button {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
+            position: relative;
+            color: white;
         }
-        .floating-social a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(0,0,0,0.2);
+        .floating-social a::before,
+        .floating-social button::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: ripple 2s ease-out infinite;
+        }
+        .floating-social a::after,
+        .floating-social button::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.5);
+            opacity: 0;
+            animation: ripple 2s ease-out infinite;
+            animation-delay: 1s;
+        }
+        @keyframes ripple {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+        .floating-social a:hover,
+        .floating-social button:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.3);
+        }
+        .floating-social a:hover::before,
+        .floating-social a:hover::after,
+        .floating-social button:hover::before,
+        .floating-social button:hover::after {
+            animation-play-state: paused;
+            opacity: 0;
         }
         .facebook-btn {
-            background: #1877F2;
+            background: linear-gradient(135deg, #1877F2 0%, #0d5dd6 100%);
+        }
+        .facebook-btn:hover {
+            background: linear-gradient(135deg, #2d88ff 0%, #1877F2 100%);
         }
         .zalo-btn {
-            background: #0068ff;
+            background: linear-gradient(135deg, #0068ff 0%, #0052cc 100%);
+        }
+        .zalo-btn:hover {
+            background: linear-gradient(135deg, #1a7aff 0%, #0068ff 100%);
         }
         .nav-link {
             position: relative;
@@ -115,8 +168,9 @@
         
         /* Logo Style */
         .logo-text {
+            font-family: 'Kumar One', cursive;
             font-size: 2rem;
-            font-weight: 900;
+            font-weight: 400;
             letter-spacing: -0.5px;
             color: white;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
@@ -468,9 +522,9 @@
                         <div class="flex items-center">
                             <a href="{{ route('home') }}" class="flex items-center space-x-3 hover:opacity-90 transition-all duration-300 group">
                                 <div class="bg-white p-1 rounded shadow-md group-hover:shadow-lg transition-all duration-300">
-                                    <img src="{{ asset('logo.png') }}" alt="Shopkaia3 Logo" class="h-10 w-auto group-hover:scale-105 transition-transform duration-300">
+                                    <img src="{{ asset('logo.png') }}" alt="ShopKaaia3 Logo" class="h-10 w-auto group-hover:scale-105 transition-transform duration-300">
                                 </div>
-                                <span class="logo-text">Shopkaia3</span>
+                                <span class="logo-text">ShopKaaia3</span>
                             </a>
                         </div>
                         
@@ -478,7 +532,6 @@
                         <div class="hidden md:flex md:items-center md:space-x-1">
                             <a href="{{ route('home') }}" class="nav-link px-4 py-2 text-white hover:bg-white/10 rounded-lg font-medium transition-all {{ request()->routeIs('home') ? 'bg-white/20' : '' }}">Trang chủ</a>
                             <a href="{{ route('accounts.index') }}" class="nav-link px-4 py-2 text-white hover:bg-white/10 rounded-lg font-medium transition-all {{ request()->routeIs('accounts.*') ? 'bg-white/20' : '' }}">Tài khoản</a>
-                            <a href="{{ route('services.index') }}" class="nav-link px-4 py-2 text-white hover:bg-white/10 rounded-lg font-medium transition-all {{ request()->routeIs('services.*') ? 'bg-white/20' : '' }}">Dịch vụ</a>
                             @if(Auth::check() && Auth::user()->isAdmin())
                             <a href="{{ route('topup.index') }}" class="nav-link px-4 py-2 text-white hover:bg-white/10 rounded-lg font-medium transition-all {{ request()->routeIs('topup.*') ? 'bg-white/20' : '' }}">Nạp hộ</a>
                             @endif
@@ -575,9 +628,6 @@
                         </a>
                         <a href="{{ route('accounts.index') }}" class="block px-3 py-2 rounded-md text-white {{ request()->routeIs('accounts.*') ? 'bg-indigo-700 font-medium' : 'hover:bg-indigo-700' }} transition">
                             <i class="bi bi-person-circle mr-2"></i>Tài khoản
-                        </a>
-                        <a href="{{ route('services.index') }}" class="block px-3 py-2 rounded-md text-white {{ request()->routeIs('services.*') ? 'bg-indigo-700 font-medium' : 'hover:bg-indigo-700' }} transition">
-                            <i class="bi bi-gear mr-2"></i>Dịch vụ
                         </a>
                         @if(Auth::check() && Auth::user()->isAdmin())
                         <a href="{{ route('topup.index') }}" class="block px-3 py-2 rounded-md text-white {{ request()->routeIs('topup.*') ? 'bg-indigo-700 font-medium' : 'hover:bg-indigo-700' }} transition">
@@ -709,7 +759,7 @@
         <!-- Footer -->
         <footer class="bg-gray-900 text-white pt-12 pb-6">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <h4 class="text-lg font-semibold mb-4 flex items-center">
                             <i class="bi bi-info-circle mr-2"></i>Về chúng tôi
@@ -726,20 +776,7 @@
                             </a>
                         </div>
                     </div>
-                    
-                    <div>
-                        <h4 class="text-lg font-semibold mb-4 flex items-center">
-                            <i class="bi bi-link-45deg mr-2"></i>Liên kết nhanh
-                        </h4>
-                        <ul class="space-y-2 text-gray-400">
-                            <li><a href="{{ route('home') }}" class="hover:text-white transition"><i class="bi bi-chevron-right mr-2 text-xs"></i>Trang chủ</a></li>
-                            <li><a href="{{ route('accounts.index') }}" class="hover:text-white transition"><i class="bi bi-chevron-right mr-2 text-xs"></i>Tài khoản</a></li>
-                            <li><a href="{{ route('services.index') }}" class="hover:text-white transition"><i class="bi bi-chevron-right mr-2 text-xs"></i>Dịch vụ</a></li>
-                            <li><a href="{{ route('topup.index') }}" class="hover:text-white transition"><i class="bi bi-chevron-right mr-2 text-xs"></i>Nạp hộ</a></li>
-                            <li><a href="{{ route('contact') }}" class="hover:text-white transition"><i class="bi bi-chevron-right mr-2 text-xs"></i>Liên hệ</a></li>
-                        </ul>
-                    </div>
-                    
+
                     <div>
                         <h4 class="text-lg font-semibold mb-4 flex items-center">
                             <i class="bi bi-telephone mr-2"></i>Liên hệ
@@ -760,24 +797,20 @@
                         </ul>
                     </div>
                 </div>
-                
-                <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
-                    <p>&copy; {{ date('Y') }} ShopBuffsao. Tất cả quyền được bảo lưu.</p>
-                </div>
             </div>
         </footer>
     </div>
     
     <!-- Floating Social Buttons -->
     <div class="floating-social">
-        <a href="https://www.facebook.com/people/Shopbuffsao/61574594802771/" target="_blank" class="facebook-btn">
-            <i class="bi bi-facebook text-xl"></i>
+        <a href="https://www.facebook.com/people/Shopbuffsao/61574594802771/" target="_blank" class="facebook-btn" title="Facebook">
+            <i class="bi bi-facebook text-2xl text-white"></i>
         </a>
-        <a href="https://zalo.me/0876085633" target="_blank" class="zalo-btn">
-            <span class="font-bold text-sm">Zalo</span>
+        <a href="https://zalo.me/0876085633" target="_blank" class="zalo-btn" title="Zalo">
+            <span class="font-bold text-base text-white">Zalo</span>
         </a>
-        <button id="scrollToTop" class="bg-gray-800 text-white hover:bg-gray-700 transition">
-            <i class="bi bi-arrow-up"></i>
+        <button id="scrollToTop" class="bg-gradient-to-br from-gray-700 to-gray-900 text-white hover:from-gray-600 hover:to-gray-800" title="Lên đầu trang">
+            <i class="bi bi-arrow-up text-xl text-white"></i>
         </button>
     </div>
     
