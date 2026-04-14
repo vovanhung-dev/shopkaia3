@@ -1,23 +1,23 @@
-# ShopKaia3 - Nen Tang Ban Dich Vu Game
+# ShopKaia3 - Nền Tảng Bán Dịch Vụ Game
 
-## Danh Muc
+## Danh Mục
 
 `Web ban hang` `Full Stack`
 
-## Gioi Thieu
+## Giới Thiệu
 
-Nen tang thuong mai dien tu chuyen ve dich vu game Lien Quan (Arena of Valor), ho tro ban tai khoan game, dich vu cay thue (boosting) va nap the voi he thong thanh toan tich hop.
+Nền tảng thương mại điện tử chuyên về dịch vụ game Liên Quân (Arena of Valor), hỗ trợ bán tài khoản game, dịch vụ cày thuê (boosting) và nạp thẻ với hệ thống thanh toán tích hợp.
 
-## Chuc Nang
+## Chức Năng
 
-- Ban tai khoan game voi he thong dat truoc 15 phut
-- Dich vu cay thue (boosting)
-- Nap the truc tuyen
-- Vi dien tu noi bo
-- Thanh toan qua SePay (chuyen khoan ngan hang) va TheSieuRe (the cao)
-- Quan ly san pham, don hang, nguoi dung (Admin)
+- Bán tài khoản game với hệ thống đặt trước 15 phút
+- Dịch vụ cày thuê (boosting)
+- Nạp thẻ trực tuyến
+- Ví điện tử nội bộ
+- Thanh toán qua SePay (chuyển khoản ngân hàng) và TheSieuRe (thẻ cào)
+- Quản lý sản phẩm, đơn hàng, người dùng (Admin)
 
-## Cong Nghe Su Dung
+## Công Nghệ Sử Dụng
 
 - **Backend:** Laravel 10.x (PHP 8.1+)
 - **Frontend:** Blade Templates, TailwindCSS 3.4+
@@ -26,14 +26,14 @@ Nen tang thuong mai dien tu chuyen ve dich vu game Lien Quan (Arena of Valor), h
 - **Authentication:** Laravel Sanctum
 - **Payment:** SePay, TheSieuRe
 
-## Yeu Cau He Thong
+## Yêu Cầu Hệ Thống
 
 - PHP >= 8.1
 - Composer
 - Node.js >= 16
 - MySQL >= 5.7
 
-## Cai Dat
+## Cài Đặt
 
 ```bash
 composer install
@@ -43,7 +43,7 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
-## Chay Ung Dung
+## Chạy Ứng Dụng
 
 ```bash
 php artisan serve
